@@ -8,6 +8,7 @@ use App\Manufacturer;
 use App\Product;
 use App\ProductStatus;
 use App\ProductsAttributes;
+use App\CustomeCategory;
 use Image;
 use DB;
 use Session;
@@ -37,6 +38,7 @@ class ProductController extends Controller
 
         $manufacturers = Manufacturer::where('publication_status', 1)->get();
         $product_statuses = ProductStatus::where('publication_status', 1)->get();
+        $custom_categorys = CustomeCategory::where('publication_status', 1)->get();
 
 
 
@@ -44,6 +46,7 @@ class ProductController extends Controller
             'categories_dropdowns' => $categories_dropdowns,
             'manufacturers' => $manufacturers,
             'product_statuses' => $product_statuses,
+            'custom_categorys' => $custom_categorys
         ]);
     }
 
@@ -55,14 +58,13 @@ class ProductController extends Controller
         $imageUrl_back = $this->productBackImageUpload($request);
         $this->productBasicInfoSave($request, $imageUrl_front, $imageUrl_back);
 
-        return redirect('/product/add')->with('message', 'Product Info Save Successfully.');
+        return redirect()->back()->with('success', 'Product Info Save Successfully.');
     }
 
     // product info validate
     protected function productInfoValidation($request) {
 
         $this->validate($request, [
-            'category_id' => 'required',
             'manufacturer_id' => 'required',
             'product_name' => 'required',
             'product_price' => 'required',
@@ -109,7 +111,15 @@ class ProductController extends Controller
     // product save basic info
     protected function productBasicInfoSave($request, $imageUrl_front, $imageUrl_back){
         $product = new Product;
+
+        if(empty($request->category_id)){
+            $request->category_id = 0;
+        }
+        if(empty($request->custom_category_id)){
+            $request->custom_category_id = 0;
+        }
         $product->category_id          = $request->category_id;
+        $product->custom_category_id   = $request->custom_category_id;
         $product->manufacturer_id      = $request->manufacturer_id;
         $product->product_name         = $request->product_name;
         $product->product_price        = $request->product_price;
@@ -126,15 +136,35 @@ class ProductController extends Controller
     // manage product 
     public function manageProduct() {
 
-        $products = DB::table('products')
-                        ->join('categories', 'products.category_id', '=', 'categories.id')
-                        ->join('manufacturers', 'products.manufacturer_id', '=', 'manufacturers.id')
-                        ->join('product_statuses', 'products.status_id', '=', 'product_statuses.id')
-                        ->select('products.*', 'categories.category_name', 'manufacturers.manufacturer_name', 'product_statuses.status_name')
-                        ->orderBy('id', 'DESC')
-                        ->get();
+        // $products = DB::table('products')
+        //                 ->join('categories', 'products.category_id', '=', 'categories.id')
+        //                 ->join('manufacturers', 'products.manufacturer_id', '=', 'manufacturers.id')
+        //                 ->join('product_statuses', 'products.status_id', '=', 'product_statuses.id')
+        //                 ->select('products.*', 'categories.category_name', 'manufacturers.manufacturer_name', 'product_statuses.status_name')
+        //                 ->orderBy('id', 'DESC')
+        //                 ->get();
 
-        return view('admin.product.manage-product', ['products' => $products]);
+        $products = Product::get();
+
+        foreach ($products as $key => $val) {
+            $categoryName = Category::where(['id'=>$val->category_id])->first();
+            $customCategoryName = CustomeCategory::where(['id'=>$val->custom_category_id])->first();
+            $manufacturerName = Manufacturer::where(['id'=>$val->manufacturer_id])->first();
+            $productStatusName = ProductStatus::where(['id'=>$val->status_id])->first();
+            
+            if(!empty($categoryName)){
+                $products[$key]->category_name = $categoryName['category_name'];
+            }
+            if (!empty($customCategoryName)) {
+                $products[$key]->custom_category_name = $customCategoryName['category_name'];
+            }
+            $products[$key]->manufacturer_name = $manufacturerName['manufacturer_name'];
+            $products[$key]->product_status_name = $productStatusName['status_name'];
+        }
+
+        // return response($products);die;
+
+        return view('admin.product.manage-product')->with(compact('products'));
     }
 
 

@@ -25,8 +25,8 @@
                             <tr>
                                 <th class="text-center" >Sl No.</th>
                                 <th class="text-center" >Product Name</th>
+                                <th class="text-center" >Product Type</th>
                                 <th class="text-center" >Rating</th>
-                                <th class="text-center" >Rating Count</th>
                                 <th class="text-center" >Product Code</th>
                                 <th class="text-center" >Price</th>
                                 <th class="text-center" >Image</th>
@@ -39,10 +39,16 @@
                             <tr class="odd gradeX">
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $product->product_name }}</td>
+                                <td>
+                                  @if($product->custom_category_id == 0)
+                                    <span>Ready-Made</span>
+                                  @elseif($product->category_id == 0)
+                                    <span>Custom</span>
+                                  @endif
+                                </td>
                                 <td>{{ $product->rating }}</td>
-                                <td>{{ $product->rating_count }}</td>
                                 <td>{{ $product->product_code }}</td>
-                                <td>{{ $product->product_price }}</td>
+                                <td>TK. {{ $product->product_price }}</td>
 
                                 <td>
                                     <img src="{{ asset($product->product_image) }}" alt="Product Image" height="100" width="100" >

@@ -8,9 +8,9 @@
 
 	<div class="row" style="margin-top: 50px;">
 		<div class="col-md-12">
-			@if(Session::get('message'))
+			@if(Session::has('success'))
 				<div id="msg" class="alert alert-success left-icon-alert" role="alert">
-	                <strong>Well done! &nbsp;</strong>{{ Session::get('message') }}
+	                <strong>Well done! &nbsp;</strong>{{ Session::get('success') }}
 	            </div>
             @endif
 
@@ -22,7 +22,7 @@
 		    		<form class="form-horizontal" action="{{ route('new-product') }}" method="POST" enctype="multipart/form-data">
 		    			@csrf
 						<div class="form-group">
-						    <label class="control-label col-sm-2" for="category_name">Category Level Name</label>
+						    <label class="control-label col-sm-2" for="category_name">Category Level Name <span class="text-danger">(Required Only For ReadyMate Product)</span></label>
 						    <div class="col-sm-10">
 
 						    	<select class="form-control" name="category_id">
@@ -32,6 +32,19 @@
 						    	<span class="text-danger">{{ $errors->has('category_name') ? $errors->first('category_name') : ' ' }}</span>
 						    </div>
 						</div>
+
+						<div class="form-group">
+						    <label class="control-label col-sm-2" for="custom_category_name">Custom Category Name <span class="text-danger">(Required Only For Custom Product)</span></label>
+						    <div class="col-sm-10">
+						    	<select class="form-control" name="custom_category_id">
+						    		<option value="">-- Select Custom Category Name --</option>
+						    		@foreach($custom_categorys as $custom_category)
+						    			<option value="{{ $custom_category->id }}">{{ $custom_category->category_name }}</option>
+						    		@endforeach
+						    	</select>
+						    	
+						    </div>
+						 </div>
 
 						 <div class="form-group">
 						    <label class="control-label col-sm-2" for="manufacturer_name">Manufacturer Name</label>

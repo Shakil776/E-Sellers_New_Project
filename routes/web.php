@@ -385,6 +385,22 @@ Route::group(["middleware" => "admin"], function() {
 	// delete product alternate image
 	Route::get('delete-image-status/{id}', 'ProductsAlternateImageController@deleteImage');
 
+
+	// custom design start here
+	// custom category
+	// save custom categoru
+	Route::match(['get', 'post'], '/add-custom-category', 'CustomeCategoryController@customCategory');
+	// manage custom category
+	Route::get('manage-custom-category', 'CustomeCategoryController@manageCustomCategory');
+	// unpublished custom category 
+	Route::get('unpublished-custom-category/{id}', 'CustomeCategoryController@unpublishedCustomCategory');
+	// published custom category 
+	Route::get('published-custom-category/{id}', 'CustomeCategoryController@publishedCustomCategory');
+	// update custom category
+	Route::match(['get', 'post'], '/update-custom-category/{id}', 'CustomeCategoryController@updateCustomCategory');
+	// delete custom category
+	Route::get('delete-custom-category/{id}', 'CustomeCategoryController@deleteCustomCategory');
+
 });
 
 
