@@ -43,6 +43,8 @@ Route::get('/dress-details','ContactController@dressDetails');
 Route::get('/select-service','ContactController@selectService');
 //measurement
 Route::get('/measurement','ContactController@measurementOption');
+//Home Make Address
+Route::get('/home-make-address','ContactController@HomeMakeAddress');
 
 
 // prevent route if trying to access without login

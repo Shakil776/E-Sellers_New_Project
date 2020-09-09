@@ -75,9 +75,6 @@
                                 <li><a href="{{ url('shipping-return') }}">shipping & return</a></li>
                                 <li><a href="{{ url('secure-shopping') }}">secure shopping</a></li>
                                 <li><a href="{{ url('affiliates')}}">affiliates</a></li>
-                                <li><a href="{{ url('contact-us') }}">contact Us</a></li>
-                                <li><a href="{{ url('makedress')}}">Make Your Dress</a></li>
-                                <li><a href="{{ url('select-service')}}">Select Service</a></li>
                             </ul>
                         </div>
                     </div>

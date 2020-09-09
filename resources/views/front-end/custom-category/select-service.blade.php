@@ -36,7 +36,7 @@
                             <div class="theme-card text-center">
                                 <h4 style="margin-bottom:30px">Select Your Desired Service to create your design.</h4>
                                 <div class="product-button">
-                                    <a href="#" style="color:#000;" class="btn btn-solid">Home Service</a>
+                                    <a href="{{url('home-make-address')}}" style="color:#000;" class="btn btn-solid">Home Service</a>
                                     <span style="padding:0px 20px;">Or</span>
                                     <a href="{{ url('measurement')}}" style="color:#000;" class="btn btn-solid">Make Your Own Dress</a>
                                 </div>

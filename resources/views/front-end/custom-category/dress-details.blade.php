@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="product-buttons">
-                                    <a href="http://127.0.0.1:8000/checkout" style="color:#000;" class="btn btn-solid">Provide Your Measurement</a>
+                                    <a href="{{ url('select-service')}}" style="color:#000;" class="btn btn-solid">Provide Your Measurement</a>
                                     <a href="javascript:" title="Add to Wishlist" class="add_to_wishlist btn btn-info" id="1">Add to WishList</a>
                             </div>
                             <div class="border-product">
