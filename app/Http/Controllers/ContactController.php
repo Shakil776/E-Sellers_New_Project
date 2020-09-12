@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use Session;
 
 class ContactController extends Controller
 {
@@ -25,30 +26,6 @@ class ContactController extends Controller
     // show contact us
     public function showContact(){
         return view('front-end.content.contact');
-    }
-
-    //custom dress
-    public function makeDress(){
-        return view('front-end.custom-category.makedress');
-    }
-
-    //dress details
-    public function dressDetails(){
-        return view('front-end.custom-category.dress-details');
-    }
-
-    //select service
-    public function selectService(){
-        return view('front-end.custom-category.select-service');
-    }
-    //measurement
-    public function measurementOption(){
-        return view('front-end.custom-category.measurement');
-    }
-    
-    //Home Make address
-    public function HomeMakeAddress(){
-        return view('front-end.custom-category.home-make-address');
     }
 
     // add contact details

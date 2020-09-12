@@ -78,7 +78,7 @@
                                     <a href="javacript:">{{ $cartItem->name }}</a>
                                 </td>
                                 <td>
-                                    <h2>{{ $cartItem->price }}</h2>
+                                    <h2>TK. {{ $cartItem->price }}</h2>
                                 </td>
 
                                 <td>
@@ -95,13 +95,13 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ url('cart-remove/'.$cartItem->rowId) }}" class="icon cart-remove">
+                                    <a href="{{ url('cart-remove/'.$cartItem->rowId) }}" class="icon cart-remove">Remove
                                         <i class="ti-close" title="Remove"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <h2 class="td-color">{{ $total = $cartItem->price * $cartItem->qty }}</h2>
+                                    <h2 class="td-color">TK. {{ $total = $cartItem->price * $cartItem->qty }}</h2>
                                 </td>
                             </tr>
 
@@ -154,5 +154,7 @@
     <!--section end-->
 
 @endsection
+
+<?php Session::forget('chooseProduct'); ?>
 
 

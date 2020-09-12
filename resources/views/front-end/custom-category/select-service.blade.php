@@ -16,7 +16,7 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Make Your Dress</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Home</a></li>
                             <li class="breadcrumb-item active">Select Our Service</li>
                         </ol>
                     </nav>
@@ -34,11 +34,12 @@
                     <div class="row">
                         <div class="col-sm-6 offset-sm-3">
                             <div class="theme-card text-center">
+
                                 <h4 style="margin-bottom:30px">Select Your Desired Service to create your design.</h4>
                                 <div class="product-button">
-                                    <a href="{{url('home-make-address')}}" style="color:#000;" class="btn btn-solid">Home Service</a>
+                                    <a href="{{ url('home-make-address') }}" style="color:#000;" class="btn btn-solid">Home Service</a>
                                     <span style="padding:0px 20px;">Or</span>
-                                    <a href="{{ url('measurement')}}" style="color:#000;" class="btn btn-solid">Make Your Own Dress</a>
+                                    <a href="{{ url('measurement') }}" style="color:#000;" class="btn btn-solid">Make Your Own Dress</a>
                                 </div>
                             </div>  
                         </div>

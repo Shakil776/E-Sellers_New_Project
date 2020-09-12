@@ -16,8 +16,8 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Make Your Dress</a></li>
-                            <li class="breadcrumb-item active">Your Selected Dress</li>
+                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Home</a></li>
+                            <li class="breadcrumb-item active">Your Selected Dress Details</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,45 +33,69 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-slick">
-                            <div><img src="{{ asset('frontEnd')}}/images/make-design/front-1.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
-                            <div><img src="{{ asset('frontEnd')}}/images/make-design/back-1.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
+                            <div>
+                                <img src="{{ asset($productDetails->product_image) }}" alt=""
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0 mainImage">
+                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
-                                    <div><img src="{{ asset('frontEnd')}}/images/make-design/front-1.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="{{ asset('frontEnd')}}/images/make-design/back-1.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
+                                    <div>
+                                        <img src="{{ asset($productDetails->product_image) }}" alt=""
+                                            class="img-fluid blur-up lazyload changeImage">
+                                    </div>
+                                    <div>
+                                        <img src="{{ asset($productDetails->back_image) }}" alt=""
+                                            class="img-fluid blur-up lazyload changeImage">
+                                    </div>
+
+                                    @foreach($productAltImages as $image)
+                                    <div>
+                                        <img src="{{ asset($image->image) }}" alt=""
+                                            class="img-fluid blur-up lazyload changeImage" style="cursor:pointer">
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 rtl-text">
                         <div class="product-right">
-                            <h2 class="mb-0">Design 1 of <b>Salwar Kamiz</b></h2>
-                            <h5 class="mb-2">by <a href="#">Lorem</a></h5>
-                            <h3>$32.96</h3>
+                            <h2 class="mb-0">{{ $productDetails->product_name }}</b></h2>
+                            <h5 class="mb-2">by <a href="#">{{ $brandName->manufacturer_name }}</a></h5>
+                            <h3>TK. {{ $productDetails->product_price }}</h3>
+                            <h3>Code. {{ $productDetails->product_code }}</h3>
+
+                            <form action="{{ url('select-service') }}" method="post">
+                                @csrf
                             <div class="product-description border-product">
                                 <h6 class="product-title">quantity</h6>
                                 <div class="qty-box">
-                                    <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="fas fa-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="fas fa-angle-right"></i></button></span></div>
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="fas fa-angle-left"></i></button> 
+                                        </span>
+                                        <input type="text" name="qty" class="form-control input-number" value="1" min="1">
+                                        <input type="hidden" name="product_id" value="{{ $productDetails->id }}" />
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="fas fa-angle-right"></i></button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="product-buttons">
-                                    <a href="{{ url('select-service')}}" style="color:#000;" class="btn btn-solid">Provide Your Measurement</a>
-                                    <a href="javascript:" title="Add to Wishlist" class="add_to_wishlist btn btn-info" id="1">Add to WishList</a>
+                                    <!-- <a href="{{ url('') }}" style="color:#000;" class="btn btn-solid">t</a> -->
+
+                                    <input type="submit" name="btn" style="color:#000;" value="Provide Your Measurement" class="btn btn-solid" />
+
+                                    <a href="javascript:" title="Add to Wishlist" class="add_to_wishlist btn btn-info" id="<?php echo $productDetails->id; ?>">Add to WishList</a>
                             </div>
+                            </form>
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
-                                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore
-                                    veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam
-                                    voluptatem,</p>
+                                <p>{{ $productDetails->short_description }}</p>
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">share it</h6>
@@ -107,7 +131,7 @@
                     </ul>
                     <div class="tab-content nav-material" id="top-tabContent">
                         <div class="tab-pane fade active show" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                            <p>Long Description</p>
+                            <p>{{ $productDetails->long_description }}</p>
                         </div>
                         <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                             <ul>

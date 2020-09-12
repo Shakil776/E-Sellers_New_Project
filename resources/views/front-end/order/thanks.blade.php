@@ -1,3 +1,7 @@
+<?php
+  use App\Http\Controllers\Controller;
+  $beforeDays  = Controller::getBeforeDays(Session::get('orderDate'), 7, 'd-m-Y');
+?>
 @extends('front-end.master')
 
 @section('title', 'Complete Order')
@@ -84,7 +88,15 @@
                                 <li>@if(!empty($shippingDetails->shipping_mobile)) {{ $shippingDetails->shipping_mobile }} @endif</li>
                             </ul>
                         </div>
+                    </div>
 
+                    <!-- delivery data -->
+                    <div class="col-md-12">
+                        <div class="delivery-sec">
+                            <h3>expected date of delivery </h3>
+                            <span class="text-info">(7 Days from order date)</span>
+                            <h2>{{ $beforeDays[6] }}</h2>
+                        </div>
                     </div>
                 </div>
             </div>
