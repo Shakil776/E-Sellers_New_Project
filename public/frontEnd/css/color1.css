@@ -13010,6 +13010,9 @@ img{
   margin: 0 auto;
   display: block;
 }
+.measuremnt-details .form-row{
+  margin-bottom: 20px;
+}
 .dark .portfolio-section.metro-section .product-box .product-detail {
   background-color: #2b2b2b;
   -webkit-transition: all 0.3s ease;

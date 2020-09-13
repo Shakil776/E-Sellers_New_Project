@@ -45,6 +45,10 @@ Route::get('/select-service','ContactController@selectService');
 Route::get('/measurement','ContactController@measurementOption');
 //Home Make Address
 Route::get('/home-make-address','ContactController@HomeMakeAddress');
+//Address details page
+Route:: get('/address-details','ContactController@HomeAddressDetails');
+//measurment details page
+Route:: get('/measurement-details','ContactController@MeasurementDetails');
 
 
 // prevent route if trying to access without login

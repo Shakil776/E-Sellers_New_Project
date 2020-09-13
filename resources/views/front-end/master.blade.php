@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/bootstrap.css">
 
     <!-- Theme css -->
-    <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/color1.css?v=1.1" media="screen" id="color">
+    <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/color1.css?v=1.2" media="screen" id="color">
 
 
 </head>
