@@ -24,7 +24,8 @@
 
     <!-- Animate icon -->
     <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/animate.css">
-
+    <!--magnific js -->
+    <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/magnific-popup.css">
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/bootstrap.css">
 
@@ -76,7 +77,8 @@
 
     <!-- lazyload js-->
     <script src="{{ url('frontEnd') }}/js/lazysizes.min.js"></script>
-
+    <!-- imagepopup -->
+    <script src="{{ url('frontEnd')}}/js/jquery.magnific-popup.js"></script>
     <!-- Bootstrap js-->
     <script src="{{ url('frontEnd') }}/js/bootstrap.js"></script>
 

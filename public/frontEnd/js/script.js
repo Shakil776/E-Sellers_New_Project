@@ -82,6 +82,43 @@
     });
 
 
+    //select checkbox form one
+	$("input:checkbox").on('click', function() {
+		// in the handler, 'this' refers to the box clicked on
+		var $box = $(this);
+		if ($box.is(":checked")) {
+		// the name of the box is retrieved using the .attr() method
+		// as it is assumed and expected to be immutable
+		var group = "input:checkbox[name='" + $box.attr("name") + "']";
+		// the checked state of the group/box on the other hand will change
+		// and the current value is retrieved using .prop() method
+		$(group).prop("checked", false);
+		$box.prop("checked", true);
+		} else {
+			$box.prop("checked", false);
+		}
+    });
+    
+    // magnifc popup
+    $('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+			}
+		}
+	});
+
+
     /*=====================
      03. Age verify modal
      ==========================*/

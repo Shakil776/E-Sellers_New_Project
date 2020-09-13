@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
 
+	
+
 
 /*
 |--------------------------------------------------------------------------
@@ -104,8 +106,8 @@ jQuery(document).ready(function($) {
 */		
 
 	// myTheme.Fancybox = function () {
-	//
-	// 	$(".fancybox-pop").fancybox({
+	
+	// 	$(".image-pop").fancybox({
 	// 		maxWidth	: 900,
 	// 		maxHeight	: 700,
 	// 		fitToView	: true,
@@ -116,9 +118,10 @@ jQuery(document).ready(function($) {
 	// 		openEffect	: 'elastic',
 	// 		closeEffect	: 'none'
 	// 	});
-	//
+	
 	// };
-	//
+	
+	
 		
 	
 	

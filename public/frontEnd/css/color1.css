@@ -12990,10 +12990,36 @@ body.dark {
   display: none;
 }
 
-.theme-form-advanced img{
+.theme-form-advanced img,
+.guage-image img{
   width: 100%;
   height: auto;
+  cursor: zoom-in;
 }
+
+.guage-image{
+  position: relative;
+  margin-bottom: 15px;
+}
+.select-image {
+  position: absolute;
+  top: -3px;
+  right: 19px;
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  box-shadow: 2px 3px 6px -1px rgba(0,0,0,.3);
+}
+.guage-image:hover .select-image {
+  visibility: visible;
+  opacity: 1;
+  top:3px;
+}
+
 .theme-form-advanced input{
     border-color: #dddddd;
     font-size: 12px;

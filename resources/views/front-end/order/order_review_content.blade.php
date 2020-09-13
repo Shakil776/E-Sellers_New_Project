@@ -72,6 +72,24 @@
 
                               <div class="row">
 
+                                <!-- This content only appear when user select "Home service" -->
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                       <h3 class="text-center">Contact Address For Measurement</h3>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="text-center">
+                                        <p>
+                                          <span>Mahmudul Hasan</span><br>
+                                          <span>Bashaboo, Khilgoan, Dhaka</span><br>
+                                          <span>Phone: <b>0193-0343021</b></span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                   <div class="card">
                                     <div class="card-header">
@@ -176,6 +194,7 @@
                                             </div>
                                         </div>
                                         <input type="hidden" name="orderTotal" value="{{ $orderTotal }}">
+                                        <br>
                                         <div class="text-right">
                                           <button class="btn-solid btn" onclick="return selectPaymentMethod()">Place Order</button>
                                         </div>

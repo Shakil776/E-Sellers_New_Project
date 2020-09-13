@@ -85,8 +85,65 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="product-description border-product">
+                                    <h6 class="product-title">Now Select Your Desired Design</h6>
+                                    <div class="qty-box">
+                                        <div class="row popup-gallery">
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-2.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-2.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-3.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-3.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-2.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-2.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 guage-image">
+                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             <div class="product-buttons">
-                                    <!-- <a href="{{ url('') }}" style="color:#000;" class="btn btn-solid">t</a> -->
 
                                     <input type="submit" name="btn" style="color:#000;" value="Provide Your Measurement" class="btn btn-solid" />
 
@@ -200,6 +257,8 @@
         </div>
     </section>
     <!-- end related product -->
+
+
 
 
 
