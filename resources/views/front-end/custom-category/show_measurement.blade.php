@@ -46,27 +46,29 @@
     </div>
     <!-- breadcrumb End -->
 
-    <section class="register-page section-b-space">
+    <section class="login-page section-b-space">
         <div class="container">
             <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="text-center">When You Complete to upate your Measurement Then Please Add your Into Cart</h4>
+                    <hr>
+                    <br>
+                </div>
                 <div class="col-lg-6">
                     <h4>Update your measurement details</h4>
-
+                    <br>
                     <div class="theme-card">
                         
                         <form class="theme-form" action="{{ url('update-measurement') }}" method="post">
                         @csrf
 
-                            <div class="card-header mb-4">
+                            <div class="mb-4">
                                 <h4 class="text-center">Measurement Details</h4>
                             </div>
 
                             <div class="row">
-                                    <div class="col-sm-4 text-center">
-                                        <img style="width:300px;" src="{{ asset('frontEnd')}}/images/mesuarement/kamiz.png" alt="Kamiz">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="theme-card">
+                                    <div class="col-sm-12">
+                                        <div class="">
                                             <div class="form-row">
                                                 <div class="col-sm-12 card-header mb-4">
                                                     <h4 class="text-center">Kamiz</h4>
@@ -123,8 +125,8 @@
                                 <br>
                                 <br>
                                 <div class="row">
-                                    <div class="col-sm-8">
-                                        <div class="theme-card">
+                                    <div class="col-sm-12">
+                                        <div class="">
                                             <div class="form-row">
                                                 <div class="col-sm-12 card-header mb-4">
                                                     <h4 class="text-center">Salwar</h4>
@@ -157,9 +159,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 text-center mesurement-image">
-                                        <img src="{{ asset('frontEnd')}}/images/mesuarement/salwar.png" alt="Salwar">
-                                    </div>
                                     <div class="col-sm-12">
                                         <input type="hidden" name="id" value="{{ $measurementDetails->id }}" >
                                         <button type="submit" class="btn btn-solid mt-1" name="update" value="update">Update</button>
@@ -173,19 +172,23 @@
 
                 <div class="col-lg-6">
                     <h4>Your Product</h4>
-
+                    <br>
                     <div class="theme-card">
                         
-                        <form class="theme-form" action="{{ url('add-cart') }}" method="post">
+                        <form class="theme-form show-measurement-details" action="{{ url('add-cart') }}" method="post">
                         @csrf
 
                             <div>
                             @if(!empty($product))
-                                Product Image: <img src="{{ asset($product->product_image) }}" width="100" height="100"> <br>
-                                Product Name: {{ $product->product_name }} <br>
-                                Product Price: TK. {{ $product->product_price }} <br>
-                                Quantity: {{ Session::get('chooseProduct')['qty'] }} <br>
-                                Total(TK): {{ $product->product_price * Session::get('chooseProduct')['qty'] }}
+                                <div class="col-sm-12 card-header mb-4">
+                                    <h4 class="text-center">Product Image:</h4>
+                                </div>
+                                <img src="{{ asset($product->product_image) }}" width="100" height="100">
+                                <br><br>
+                                <p> Product Name : <b>{{ $product->product_name }}</b></p>
+                                <p>Product Price : <b>TK. {{ $product->product_price }}</b></p>
+                                <p>Quantity : <b> {{ Session::get('chooseProduct')['qty'] }}</b> </p> 
+                                <p>Total(TK) : <b>{{ $product->product_price * Session::get('chooseProduct')['qty'] }}</b></p>
                             @endif
                             </div>
 

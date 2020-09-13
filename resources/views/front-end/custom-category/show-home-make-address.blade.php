@@ -46,12 +46,12 @@
     </div>
     <!-- breadcrumb End -->
 
-    <section class="register-page section-b-space">
+    <section class="login-page section-b-space">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Update your home make address</h4>
-
+                    <br>
                     <div class="theme-card">
                         
                         <form class="theme-form" action="{{ url('update-home-address') }}" method="post">
@@ -96,7 +96,7 @@
                                 </div>
 
                             </div>
-
+                            <br>
                             <button type="submit" class="btn btn-solid mt-1" name="update" value="update">Update</button>
                         </form>
                     </div>
@@ -104,7 +104,7 @@
 
                 <div class="col-lg-6">
                     <h4>Your Product</h4>
-
+                    <br>
                     <div class="theme-card">
                         
                         <form class="theme-form" action="{{ url('add-cart') }}" method="post">
@@ -112,11 +112,15 @@
 
                             <div>
                             @if(!empty($product))
-                                Product Image: <img src="{{ asset($product->product_image) }}" width="100" height="100"> <br>
-                                Product Name: {{ $product->product_name }} <br>
-                                Product Price: TK. {{ $product->product_price }} <br>
-                                Quantity: {{ Session::get('chooseProduct')['qty'] }} <br>
-                                Total(TK): {{ $product->product_price * Session::get('chooseProduct')['qty'] }}
+                               
+                                <div class="card-header mb-4">
+                                    <h4 class="text-center"> Product Image</h4>
+                                </div>
+                                <img src="{{ asset($product->product_image) }}" width="300" height="350" style="display:block;margin:0 auto"> </br><br>
+                                <p>Product Name : <b>{{ $product->product_name }}</b></p> 
+                                <p>Product Price : <b>TK. {{ $product->product_price }} </b></p>
+                                <p>Quantity : <b>{{ Session::get('chooseProduct')['qty'] }}</b></p>
+                                <p> Total(TK) : <b>{{ $product->product_price * Session::get('chooseProduct')['qty'] }}</b></p>
                             @endif
                             </div>
 

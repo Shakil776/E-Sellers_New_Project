@@ -12990,7 +12990,7 @@ body.dark {
   display: none;
 }
 
-img{
+.theme-form-advanced img{
   width: 100%;
   height: auto;
 }
@@ -13012,6 +13012,10 @@ img{
 }
 .measuremnt-details .form-row{
   margin-bottom: 20px;
+}
+.show-measurement-details p{
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 .dark .portfolio-section.metro-section .product-box .product-detail {
   background-color: #2b2b2b;

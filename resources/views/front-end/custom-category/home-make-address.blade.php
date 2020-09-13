@@ -44,12 +44,10 @@
     </div>
     <!-- breadcrumb End -->
 
-    <section class="login-page section-b-space">
+    <section class="register-page section-b-space">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-<<<<<<< HEAD
-=======
                     <h4>Provide Your Exact Location Where You live Now</h4>
 
                     <div class="theme-card">
@@ -57,58 +55,46 @@
                         <form class="theme-form" action="{{ url('home-make-address') }}" method="post">
                         @csrf
 
->>>>>>> c009bf9ddb7bd750a5c8ce8070965ce136febc9c
                             <div class="card-header mb-4">
-                                <h4 class="text-center">Personal Information</h4>
+                                <h4 class="text-center">Address</h4>
                             </div>
+
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <label for="name">Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required="" autocomplete="off">
-                                    <span class="text-danger"> </span>
+                                    <label for="state">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" autocomplete="off">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="email">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="" autocomplete="off">
-                                    <span class="text-danger"> </span>
+
+                               <div class="col-md-6">
+                                    <label for="city">Mobile <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile" autocomplete="off">
                                 </div>
+                                
                             </div>
+
                             <div class="form-row">
                                 <div class="col-md-6">
-<<<<<<< HEAD
-=======
->>>>>>> c009bf9ddb7bd750a5c8ce8070965ce136febc9c
                                     <label for="state">Region/State <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="state" id="state" placeholder="Region/State" autocomplete="off">
                                 </div>
 
-<<<<<<< HEAD
-
-=======
                                <div class="col-md-6">
->>>>>>> c009bf9ddb7bd750a5c8ce8070965ce136febc9c
                                     <label for="city">Town/City <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="city" id="city" placeholder="Town/City" autocomplete="off">
                                 </div>
-
-                                 <div class="col-md-4">
-                                    <label for="country">Country <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="country" id="country" placeholder="Country" autocomplete="off">
-                                </div>
+                                
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <label for="address">House/Flat Address <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address" id="address" placeholder="House/Flat Address" autocomplete="off" rows="5"></textarea>
+                                    
                                 </div>
+
                             </div>
-<<<<<<< HEAD
-
-=======
-
+                            <br>
                             <button type="submit" class="btn btn-solid mt-1">Next</button>
->>>>>>> c009bf9ddb7bd750a5c8ce8070965ce136febc9c
                         </form>
                     </div>
                 </div>
