@@ -4,9 +4,14 @@
 Route::get('/', 'NewShopController@index');
 // category by product
 Route::get('product-category/{url}','NewShopController@categoryProducts');
+// custom category by product
+Route::get('custom-product/{url}','CustomeCategoryController@customCategoryProducts');
 // band by product
 Route::get('band/{url}','NewShopController@bandProducts');
+// product details
 Route::get('product-details/{id}','NewShopController@productDetails');
+// custom dress details
+Route::get('dress-details/{id}','CustomeCategoryController@dressDetails');
 // get product attribute price
 Route::get('/get-product-price', 'NewShopController@getProductPrice');
 // add to cart
@@ -36,20 +41,18 @@ Route::get('/contact-us', 'ContactController@showContact');
 // contact us
 Route::post('/contact', 'ContactController@contact');
 //Make Dress
-Route::get('/makedress','ContactController@makeDress');
+// Route::get('/makedress','ContactController@makeDress');
 //Dress details
-Route::get('/dress-details','ContactController@dressDetails');
+// Route::get('/dress-details','ContactController@dressDetails');
 //Select Service
-Route::get('/select-service','ContactController@selectService');
-//measurement
-Route::get('/measurement','ContactController@measurementOption');
+Route::match(['get', 'post'], '/select-service', 'CustomeCategoryController@selectService');
 //Home Make Address
-Route::get('/home-make-address','ContactController@HomeMakeAddress');
-//Address details page
-Route:: get('/address-details','ContactController@HomeAddressDetails');
-//measurment details page
-Route:: get('/measurement-details','ContactController@MeasurementDetails');
+Route::match(['get', 'post'], '/home-make-address', 'HomeMakeAddressController@HomeMakeAddress');
 
+Route::match(['get', 'post'], '/update-home-address', 'HomeMakeAddressController@updateHomeAddress');
+//measurement
+Route::match(['get', 'post'], '/measurement', 'MeasurementController@measurementOption');
+Route::match(['get', 'post'], '/update-measurement', 'MeasurementController@updateMeasurementDetails');
 
 // prevent route if trying to access without login
 Route::group(['middleware' => 'front'], function() {

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Category;
 use App\Manufacturer;
+use App\CustomeCategory;
 
 class Controller extends BaseController
 {
@@ -26,4 +27,21 @@ class Controller extends BaseController
     	return $footerBands;
     }
 
+    // custom category common for all frontend page
+    public static function customCategories(){
+    	$customeCategories = CustomeCategory::where(['publication_status' => 1])->get();
+    	return $customeCategories;
+    }
+
+    // date delivery
+    public static function getBeforeDays($specDay, $days, $format = 'd-m-Y') {
+        $d = date('d', strtotime($specDay)); 
+        $m = date('m', strtotime($specDay)); 
+        $y = date('Y', strtotime($specDay));
+        $dateArray = array();
+        for($i=1; $i<=$days; $i++) {
+            $dateArray[] = date($format, mktime(0,0,0,$m,($d+$i),$y)); 
+        }
+        return $dateArray;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
   use App\Http\Controllers\Controller;
   $mainCategories = Controller::mainCategories();
+  $customCategories = Controller::customCategories();
 ?>
 
     <div class="loader_skeleton">
@@ -324,9 +325,9 @@
                                         @endforeach
                                         <li><a href="#">Make Your Dress</a>
                                             <ul>
-                                                <li><a href="{{ url('makedress')}}">Salwar Kamiz</a></li>
-                                                <li><a href="#">Guage Fabric</a></li>
-                                                <li><a href="#">Tailors Shop</a></li>
+                                                @foreach($customCategories as $customCat)
+                                                    <li><a href="{{ asset('/custom-product/'.$customCat->url) }}">{{ $customCat->category_name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="#">About Us</a></li>

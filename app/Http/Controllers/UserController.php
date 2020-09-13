@@ -75,17 +75,6 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Field must not be empty.');
         }
 
-        // $user = User::where('email', $request->email)->first();
-
-        // if (password_verify($request->password, $user->password)) {
-        //     Session::put('customerId', $user->id);
-        //     Session::put('customerName', $user->name);
-        //     return redirect('/cart-show');
-        // } else {
-        //     Session::put('error', 'Invalid Credentials!');
-        //     return redirect()->back();
-        // }
-
         $userdata = array(
             'email'     => $request->email,
             'password'  => $request->password
@@ -221,19 +210,19 @@ class UserController extends Controller
             // update password
             User::where('email', $data['email'])->update(['password' => $newPassword]);
             // send new forgot password to the email code
-            $email = $data['email'];
-            $name = $userDetails->name;
-            $messageData = [
-                'email' => $email,
-                'name' => $name,
-                'password' => $randomPassword
-            ];
+            // $email = $data['email'];
+            // $name = $userDetails->name;
+            // $messageData = [
+            //     'email' => $email,
+            //     'name' => $name,
+            //     'password' => $randomPassword
+            // ];
 
-            Mail::send('front-end.mails.forgot_pass_mail', $messageData, function($message) use ($email) {
-                $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
-                $message->to($email);
-                $message->subject('New Password');
-            });
+            // Mail::send('front-end.mails.forgot_pass_mail', $messageData, function($message) use ($email) {
+            //     $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
+            //     $message->to($email);
+            //     $message->subject('New Password');
+            // });
             return redirect('login')->with('success', 'Please check your email for new Password.');
         }
         return view('front-end.customer.forgot_password');
