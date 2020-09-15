@@ -13,6 +13,11 @@ class CartController extends Controller
 
     	$product = Product::find($request->id);
         // echo "<pre>";print_r($product);die();
+        if($request->design_image){
+            $design_image = $request->design_image;
+        }else{
+            $design_image = "";
+        }
 
     	Cart::add([
     		'id' => $request->id,
@@ -23,6 +28,7 @@ class CartController extends Controller
     		'options' => [
     			'image' => $product->product_image,
                 'code' => $product->product_code,
+                'design_image' => $design_image,
                 // 'size' => $request->size,
                 // 'color' => $request->color,
     		]
@@ -60,6 +66,7 @@ class CartController extends Controller
     public function showCart() {
     	$cartItems = Cart::content();
         $countCartItem = count(Cart::content());
+        // return response($cartItems); die;
     	return view('front-end.cart.show_cart')->with(compact('cartItems', 'countCartItem'));
     }
 

@@ -7,6 +7,7 @@ use App\CustomeCategory;
 use App\Product;
 use App\Manufacturer;
 use App\ProductsAlternateImage;
+use App\DesignImage;
 use Session;
 
 class CustomeCategoryController extends Controller
@@ -97,6 +98,7 @@ class CustomeCategoryController extends Controller
                                 ->where('custom_category_id', '!=', 0)
                                 ->inRandomOrder()
                                 ->paginate(20);
+        // return response($allCustomProducts); die;
 
         return view('front-end.category.custom_category_content')->with(compact('customCategories', 'allCustomProducts'));
     }
@@ -108,6 +110,8 @@ class CustomeCategoryController extends Controller
         $productDetails = json_decode(json_encode($productDetails));
 
         $brandName = Manufacturer::where('id', $productDetails->manufacturer_id)->first();
+        $customeCategoryName = CustomeCategory::select('category_name')->where('id', 2)->first();
+        // return response($customeCategoryName); die;
         
         // related product show in product details page
         // $relatedProducts = Product::where('id','!=',$id)
@@ -126,16 +130,32 @@ class CustomeCategoryController extends Controller
         // $reviews_count = Review::where('product_id', $id)->count('review'); 
 
         $productAltImages = ProductsAlternateImage::where('product_id', $id)->get();
+        $designImages = DesignImage::where('status', 1)->inRandomOrder()->take(12)->get();
 
-        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages'));
+        // $customerDesignImageId = Session::get('designImageId');
+        // if($customerDesignImageId){
+        //     $customerDesignImage = DesignImage::where('id', $customerDesignImageId)->first();
+        // }
+        
+        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'designImages', 'customeCategoryName'));
     }
 
     //select service
     public function selectService(Request $request){
         if($request->isMethod('post')){
-            $data = $request->all();
-            // return response($data); die;
+            //$data = $request->all();
+            $qty = $request->qty;
+            $product_id = $request->product_id;
+
+            if($request->design_image){
+                $design_image = $request->design_image;
+            }else{
+                $design_image = 0;
+            }
+            
+            $data = ['qty'=>$qty, 'product_id'=>$product_id, 'design_image'=>$design_image]; 
             Session::put('chooseProduct', $data);
+            // return response(Session::get('chooseProduct')); die;
             return view('front-end.custom-category.select-service');
         }
         return view('front-end.custom-category.select-service');

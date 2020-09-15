@@ -73,6 +73,7 @@
                               <div class="row">
 
                                 <!-- This content only appear when user select "Home service" -->
+                                @if(!empty($homeMakeAddressDetails))
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                   <div class="card">
                                     <div class="card-header">
@@ -81,14 +82,15 @@
                                     <div class="card-body">
                                       <div class="text-center">
                                         <p>
-                                          <span>Mahmudul Hasan</span><br>
-                                          <span>Bashaboo, Khilgoan, Dhaka</span><br>
-                                          <span>Phone: <b>0193-0343021</b></span>
+                                          <span>{{ $homeMakeAddressDetails->name }}</span><br>
+                                          <span>{{ $homeMakeAddressDetails->address }}, {{ $homeMakeAddressDetails->state }}, {{ $homeMakeAddressDetails->city }}</span><br>
+                                          <span>Phone: <b>{{ $homeMakeAddressDetails->mobile }}</b></span>
                                         </p>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+                                @endif
 
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                   <div class="card">
@@ -210,5 +212,6 @@
     <!-- section end -->
 
 @endsection
+
 
 

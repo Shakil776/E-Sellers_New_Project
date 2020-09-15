@@ -128,6 +128,9 @@
                             <input type="hidden" name="qty" value="{{ Session::get('chooseProduct')['qty'] }}">
                             <input type="hidden" name="id" value="{{ Session::get('chooseProduct')['product_id'] }}" />
                             
+                            <input type="hidden" name="design_image" value="{{ Session::get('chooseProduct')['design_image'] }}" />
+                            
+                            
                             <button type="submit" class="btn btn-solid mt-1" name="addToCart" value="add to cart">Add to Cart</button>
                         </form>
                     </div>
