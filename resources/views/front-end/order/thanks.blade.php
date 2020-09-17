@@ -111,6 +111,7 @@
     Session::forget('orderId');
     Session::forget('orderDate');
     Session::forget('shippingId');
+    Session::forget('homeMakeAddress');
 @endphp
 
 

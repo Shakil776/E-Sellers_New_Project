@@ -9,6 +9,7 @@ use App\Shipping;
 use App\Order;
 use App\Payment;
 use App\OrderDetail;
+use App\HomeMakeAddress;
 use Mail;
 use Cart;
 use Session;
@@ -94,7 +95,10 @@ class CheckoutController extends Controller
         $user = User::findOrFail($user_id);
         $shippingDetails = Shipping::find(Session::get('shippingId'));
         $cartItems = Cart::content();
-        return view('front-end.order.order_review_content', compact('user', 'shippingDetails', 'cartItems'));
+
+        $homeMakeAddressDetails = HomeMakeAddress::find(Session::get('homeMakeAddress'));
+        
+        return view('front-end.order.order_review_content', compact('user', 'shippingDetails', 'cartItems', 'homeMakeAddressDetails'));
     }
 
     // place order

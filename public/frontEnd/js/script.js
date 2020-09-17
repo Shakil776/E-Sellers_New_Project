@@ -1524,6 +1524,17 @@ function addContactDetails(){
         $(".mainImage").attr('src', image);
     });
 
+    // show user design image
+    $(window).on('load', function() {
+        var value = $("#cutomCategoryCheck").text();
+
+        if(value == 2){
+            $("#custom_design_image").show();
+        }else{
+            $("#custom_design_image").hide();
+        }
+    });
+
 
 // csrf token setup
 $.ajaxSetup({

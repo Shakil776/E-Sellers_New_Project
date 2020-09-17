@@ -75,6 +75,7 @@
                                     <div class="row margin-res">
                                     @foreach($allCustomProducts as $customProduct)
                                         <div class="col-lg-3">
+                                            
                                             <div class="product-box">
                                                 <div class="img-wrapper">
                                                     <div class="front">

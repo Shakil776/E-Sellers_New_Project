@@ -40,10 +40,8 @@ Route:: get('/affiliates', 'ContactController@affiliates');
 Route::get('/contact-us', 'ContactController@showContact');
 // contact us
 Route::post('/contact', 'ContactController@contact');
-//Make Dress
-// Route::get('/makedress','ContactController@makeDress');
-//Dress details
-// Route::get('/dress-details','ContactController@dressDetails');
+// user upload design image 
+// Route::match(['get', 'post'], '/user-upload-image', 'DesignImageController@userUploadDesignImage');
 //Select Service
 Route::match(['get', 'post'], '/select-service', 'CustomeCategoryController@selectService');
 //Home Make Address
@@ -409,6 +407,15 @@ Route::group(["middleware" => "admin"], function() {
 	Route::match(['get', 'post'], '/update-custom-category/{id}', 'CustomeCategoryController@updateCustomCategory');
 	// delete custom category
 	Route::get('delete-custom-category/{id}', 'CustomeCategoryController@deleteCustomCategory');
+
+	// design image
+	Route::match(['get', 'post'], '/add-design-image', 'DesignImageController@addDesignImage');
+	// manage design Image
+	Route::get('manage-design-image', 'DesignImageController@manageDesignImage');
+	// update design image status
+	Route::get('update-design-status/{id}/{status}', 'DesignImageController@updateDesignImageStatus');	
+	// delete design image
+	Route::get('delete-design-image/{id}', 'DesignImageController@deleteDesignImage');
 
 });
 

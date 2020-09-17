@@ -64,6 +64,20 @@
         </li>
         <!-- custom category manager end -->
 
+        <!-- design image manager start -->
+        <li>
+            <a href=""><i class="fa fa-envelope"></i>&nbsp;Design Image Manager<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="{{ url('add-design-image') }}">Add Design Image</a>
+                </li>
+                <li>
+                    <a href="{{ url('manage-design-image') }}">Manage Design Image</a>
+                </li>
+            </ul>
+        </li>
+        <!-- custom category manager end -->
+
         @if(Session::get('adminDetails')['manufacturer_access'] == 1)
         <li>
             <a href=""><i class="fa fa-filter"></i>&nbsp;Manufacturer Manager<span class="fa arrow"></span></a>

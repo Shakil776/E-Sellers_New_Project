@@ -86,70 +86,56 @@
                                 </div>
                             </div>
 
-                            <div class="product-description border-product">
-                                    <h6 class="product-title">Now Select Your Desired Design</h6>
+                                <span id="cutomCategoryCheck" style="display:none">{{ $productDetails->custom_category_id }}</span>
+                                
+                                <div class="product-description border-product" id="custom_design_image" style="display:none">
+                                    <h6 class="product-title">Select Your Desired Design</h6>
                                     <div class="qty-box">
                                         <div class="row popup-gallery">
+
+                                            @foreach($designImages as $image)
                                             <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
+                                                <a href="{{ asset($image->design_image) }}">
+                                                    <img src="{{ asset($image->design_image) }}" alt="demo design"></a>
                                                 <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                    <input type="checkbox" class="radio" value="{{ $image->id }}" name="design_image" />
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-2.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-2.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-3.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-3.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-2.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-2.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3 guage-image">
-                                                <a href="{{ url('frontEnd') }}/images/make-design/front-1.jpg"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt="demo design"></a>
-                                                <div class="select-image" data-toggle="tooltip" data-placement="right" title="Select Your Design">
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>
-
+                                
+                               
+                                
 
                             <div class="product-buttons">
 
-                                    <input type="submit" name="btn" style="color:#000;" value="Provide Your Measurement" class="btn btn-solid" />
+                                <input type="submit" name="btn" style="color:#000;" value="Provide Your Measurement" class="btn btn-solid" />
 
-                                    <a href="javascript:" title="Add to Wishlist" class="add_to_wishlist btn btn-info" id="<?php echo $productDetails->id; ?>">Add to WishList</a>
+                                <a href="javascript:" title="Add to Wishlist" class="add_to_wishlist btn btn-info" id="<?php echo $productDetails->id; ?>">Add to WishList</a>
                             </div>
+                            </form> 
+
+                            <!-- self design image upload if our design not choose -->
+                            <!-- <form action="{{ url('user-upload-image') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                                <H3>OR</H3>
+                                <span>Upload your desire design image</span> <br>
+                                <label class="control-label">Upload Image: </label>
+                                <input type="file" accept="image/*" name="design_image" id="design_image"><br>
+                                <input type="submit" name="btn" class="btn btn-success" value="Upload">
                             </form>
+
+                            @if(!empty(Session::get('uploadedImage')))
+                            <a href="javascript:">
+                                <img src="{{ asset(Session::get('uploadedImage')[design_image]) }}" alt="demo design">
+                            </a>
+                            @endif -->
+
+
+
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
                                 <p>{{ $productDetails->short_description }}</p>
