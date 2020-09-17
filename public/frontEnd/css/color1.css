@@ -12997,6 +12997,37 @@ body.dark {
   cursor: zoom-in;
 }
 
+.register-page .tab-pane .checkbox-level label{
+  float: none;
+  display: block;
+}
+.register-page .tab-pane .checkbox-level label input{
+  margin-right: 5px;
+}
+.ex-level{
+  background: #eee;
+  border:1px solid #ddd;
+  padding: 35px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .3s ease-in-out;
+}
+.ex-level h3{
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.ex-level p{
+  padding:0px !important;
+} 
+.ex-level:hover{
+  background-color: #ff4c3b;
+  border-color: #ff4c3b;
+}
+.ex-level:hover p,
+.ex-level:hover h3{
+  color:#fff;
+}
 .guage-image{
   position: relative;
   margin-bottom: 15px;

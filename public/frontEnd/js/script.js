@@ -116,7 +116,16 @@
 				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
 			}
 		}
-	});
+    });
+    
+
+    // script for tab link
+    var hash = window.location.hash;
+
+    if (hash != "")
+        $('#top-tab a[href="' + hash + '"]').tab('show');
+    else
+        $('#top-tab a:first').tab('show');
 
 
     /*=====================

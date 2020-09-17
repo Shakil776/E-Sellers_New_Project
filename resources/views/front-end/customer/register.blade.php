@@ -70,7 +70,7 @@
                         <li class="nav-item"><a class="newnav nav-link active show" id="profile-top-tab" data-toggle="tab" href="#top-profile" role="tab" aria-selected="true"><b>Sign Up As Customer</b></a>
                             <div class="material-border"></div>
                         </li>
-                        <li class="nav-item"><a class=" newnav nav-link" id="review-top-tab" data-toggle="tab" href="#top-review" role="tab" aria-selected="false"><b>Sign Up As Shopper</b></a>
+                        <li class="nav-item"><a class="newnav nav-link" id="review-top-tab" data-toggle="tab" href="#top-review" role="tab" aria-selected="false"><b>Sign Up As Shopper</b></a>
                             <div class="material-border"></div>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <label for="name">Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required="" autocomplete="off">
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required="" autocomplete="off">
                                             <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span>
                                         </div>
                                         <div class="col-md-6">
@@ -147,8 +147,118 @@
                                 </div>
                                 
                                 <form class="theme-form" action="#" method="post">
-                                   
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="csname">Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="csname" id="csname" placeholder="Full Name" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="csemail">Email <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" name="csemail" id="csemail" placeholder="Email" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="csmobile">Mobile Number <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" name="csmobile" id="csmobile" placeholder="Mobile Number" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="cspassword">Password <span class="text-danger">*</span></label>
+                                            <input type="password" class="form-control" name="cspassword" id="cspassword" placeholder="Password" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="csusername">NID/Birthdate/Passport <small>(max 200 KB)</small><span class="text-danger">*</span></label>
+                                            <input type="file" accept="image/*" class="form-control" name="category_icon" id="category_icon" >
+                                            <span class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="csusername">User Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="csusername" id="csusername" placeholder="User Name" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="card-header mb-4">
+                                        <h4 class="text-center">Shopper Address</h4>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="csstate">Region/State  <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="csstate" id="state" placeholder="Region/State" autocomplete="off">
+                                        </div>
 
+                                    <div class="col-md-6">
+                                            <label for="city">Town/City  <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="cscity" id="cscity" placeholder="Town/City" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="address">House/Flat Address  <span class="text-danger">*</span></label>
+                                            <textarea class="form-control" name="csaddress" id="csaddress" placeholder="House/Flat Address" autocomplete="off" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="card-header mb-4">
+                                        <h4 class="text-center">Service </h4>
+                                    </div>
+                                    <div class="form-row checkbox-level">
+                                        <div class="col-md-12">
+                                            <label for="csservice">Give A Breif About Your Service</label>
+                                            <textarea class="form-control" name="csservice" id="csservice" placeholder="About Your Service" autocomplete="off" rows="5"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <br>
+                                            <label for="csservice">Which Type of Service Do you Provide ?</label>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label for="sk"><input type="checkbox" id="sk">Salwar Kamiz</label>
+                                                    <label for="kr"><input type="checkbox" id="kr">Kurta</label>
+                                                    <label for="pn"><input type="checkbox" id="pn">Panzabi</label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="nw"><input type="checkbox" id="nw">Night Ware</label>
+                                                    <label for="le"><input type="checkbox" id="le">Lehegas</label>
+                                                    <label for="gn"><input type="checkbox" id="gn">Gowns</label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="bbd"><input type="checkbox" id="bbd">Block Batik Dress</label>
+                                                    <label for="ab"><input type="checkbox" id="ab">Abaya & Borka</label>
+                                                    <label for="am"><input type="checkbox" id="am">Ambroidery</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="csservice">What is your Experience Level ?</label>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="ex-level">
+                                                        <h3>Entry Level</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsas.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="ex-level">
+                                                        <h3>Intermediate</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsas.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <div class="ex-level">
+                                                        <h3>Expret</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsa</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
                                     <button type="submit" class="btn btn-solid mt-1">Register</button>
                                 </form>
                             </div>

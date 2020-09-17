@@ -332,7 +332,7 @@
                                         </li>
                                         <li><a href="#">About Us</a></li>
                                         <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
-                                        <li><a href="#">Create Shop</a></li>
+                                        <li><a href="{{ url('register') }}#top-review">Create Shop</a></li>
                                     </ul>
                                 </nav>
                             </div>
