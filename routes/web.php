@@ -52,6 +52,11 @@ Route::match(['get', 'post'], '/update-home-address', 'HomeMakeAddressController
 Route::match(['get', 'post'], '/measurement', 'MeasurementController@measurementOption');
 Route::match(['get', 'post'], '/update-measurement', 'MeasurementController@updateMeasurementDetails');
 
+//shopper dashboard page
+Route::get('/shopper-dashboard','ContactController@shopperDashboard');
+//Create Product
+Route::get('/create-product','ContactController@createProductSample');
+
 // prevent route if trying to access without login
 Route::group(['middleware' => 'front'], function() {
     // customer profie

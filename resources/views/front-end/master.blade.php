@@ -92,7 +92,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js"></script>
 
     <!-- Theme js-->
-    <script src="{{ url('frontEnd') }}/js/script.js?v=1.0"></script>
+    <script src="{{ url('frontEnd') }}/js/script.js?v=1.1"></script>
 
     <script>
         $(window).on('load', function () {

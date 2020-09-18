@@ -75,8 +75,8 @@
                                 <li><a href="{{ url('shipping-return') }}">shipping & return</a></li>
                                 <li><a href="{{ url('secure-shopping') }}">secure shopping</a></li>
                                 <li><a href="{{ url('affiliates')}}">affiliates</a></li>
-                                <li><a href="{{ url('address-details')}}">Address Details</a></li>
-                                <li><a href="{{ url('measurement-details')}}">Measurement Details</a></li>
+                                <li><a href="{{ url('shopper-dashboard')}}">Create Shop Dashboard</a></li>
+                                <li><a href="{{ url('create-product')}}">Create Product</a></li>
                             </ul>
                         </div>
                     </div>

@@ -13020,13 +13020,85 @@ body.dark {
 .ex-level p{
   padding:0px !important;
 } 
-.ex-level:hover{
+.ex-level:hover,
+.ex-level.activeClass{
   background-color: #ff4c3b;
   border-color: #ff4c3b;
 }
 .ex-level:hover p,
-.ex-level:hover h3{
+.ex-level:hover h3,
+.ex-level.activeClass p,
+.ex-level.activeClass h3{
   color:#fff;
+}
+.shopkeeper-details .col-sm-6,
+.shopkeeper-details .col-sm-8{
+  margin-bottom: 20px;
+}
+.shopkeeper-details ul{
+  margin-top: 15px;
+}
+.shopkeeper-details ul li{
+  float: none;
+  margin-bottom: 3px;
+  font-size: 17px;
+  display: block;
+}
+.shopkeeper-details p{
+  padding:0px 0px 5px !important;
+}
+.step-box{
+  position: relative;
+  padding: 50px 15px 33px;
+  -webkit-box-shadow: 0 15px 39px 0 rgba(8, 18, 109, 0.08);
+  box-shadow: 0 15px 39px 0 rgba(8, 18, 109, 0.08);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+}
+.step-box .steps{
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.step-box p{
+  font-size: 25px;
+}
+.addvanced-app .cart-wrap i{
+  margin-left: -10px;
+}
+.addvanced-app .product-detail{
+  padding:5px
+}
+.tab-product .create-product{
+  display: block;
+  width: 100%;
+  height: 85%;
+  border: 1px solid #eee;
+  position: relative;
+}
+.tab-product .create-product a{
+  display: block;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.tab-product .create-product i{
+  font-size: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+}
+
+.dark .ex-level h3,
+.dark .ex-level p{
+  color: #000;
 }
 .guage-image{
   position: relative;

@@ -54,6 +54,14 @@
         $(this).remove();
     });
 
+    /*--===================
+    active class for experience level
+    ===========================-- */
+    $('.ex-level').click(function(event){
+        $(this).toggleClass("activeClass");
+        event.stopPropagation();
+    });
+
 
 
 

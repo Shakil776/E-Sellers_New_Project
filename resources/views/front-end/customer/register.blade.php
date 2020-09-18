@@ -142,6 +142,7 @@
                         </div>
                         <div  class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                             <div class="theme-card">
+                                <p class ="text-center">Wanted To Sell Your Product On Online. Don't Worry. We Are For You.</p>
                                 <div class="card-header mb-4">
                                     <h4 class="text-center">Personal Information For Shopper</h4>
                                 </div>
@@ -156,6 +157,13 @@
                                         <div class="col-md-6">
                                             <label for="csemail">Email <span class="text-danger">*</span></label>
                                             <input type="email" class="form-control" name="csemail" id="csemail" placeholder="Email" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="csname">Shop Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="csname" id="csname" placeholder="Shop Name" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
@@ -238,22 +246,13 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <div class="ex-level">
-                                                        <h3>Entry Level</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsas.</p>
-                                                    </div>
+                                                    <label for="entry"><input type="radio" id="entry" name="level" value="entry">Entry Level</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <div class="ex-level">
-                                                        <h3>Intermediate</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsas.</p>
-                                                    </div>
+                                                    <label for="intermidiate"><input type="radio" id="intermidiate" name="level" value="intermidiate">Intermediate Level</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                <div class="ex-level">
-                                                        <h3>Expret</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus nemo eveniet magnam pariatur modi ipsa</p>
-                                                    </div>
+                                                    <label for="expert"><input type="radio" id="expert" name="level" value="expert">Expert</label>
                                                 </div>
                                             </div>
                                         </div>
