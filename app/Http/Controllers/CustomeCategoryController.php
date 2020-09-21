@@ -8,6 +8,7 @@ use App\Product;
 use App\Manufacturer;
 use App\ProductsAlternateImage;
 use App\DesignImage;
+use App\Shoper;
 use Session;
 
 class CustomeCategoryController extends Controller
@@ -107,11 +108,13 @@ class CustomeCategoryController extends Controller
     public function dressDetails($id = null) {
         //get product details of particular id
         $productDetails = Product::with('attributes')->where('id', $id)->first();
-        $productDetails = json_decode(json_encode($productDetails));
-
+        // $productDetails = json_decode(json_encode($productDetails));
+        
         $brandName = Manufacturer::where('id', $productDetails->manufacturer_id)->first();
+        $shopName = Shoper::where('id', $productDetails->shopper_id)->first();
         $customeCategoryName = CustomeCategory::select('category_name')->where('id', 2)->first();
-        // return response($customeCategoryName); die;
+        // return response($productDetails); die;
+        
         
         // related product show in product details page
         // $relatedProducts = Product::where('id','!=',$id)
@@ -137,7 +140,7 @@ class CustomeCategoryController extends Controller
         //     $customerDesignImage = DesignImage::where('id', $customerDesignImageId)->first();
         // }
         
-        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'designImages', 'customeCategoryName'));
+        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'designImages', 'customeCategoryName', 'shopName'));
     }
 
     //select service

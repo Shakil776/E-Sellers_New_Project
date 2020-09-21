@@ -12,6 +12,8 @@ Route::get('band/{url}','NewShopController@bandProducts');
 Route::get('product-details/{id}','NewShopController@productDetails');
 // custom dress details
 Route::get('dress-details/{id}','CustomeCategoryController@dressDetails');
+// tailors shop product
+Route::match(['get', 'post'], '/tailors-shop', 'ShoperController@showTailorsShopProduct');
 // get product attribute price
 Route::get('/get-product-price', 'NewShopController@getProductPrice');
 // add to cart
@@ -52,10 +54,14 @@ Route::match(['get', 'post'], '/update-home-address', 'HomeMakeAddressController
 Route::match(['get', 'post'], '/measurement', 'MeasurementController@measurementOption');
 Route::match(['get', 'post'], '/update-measurement', 'MeasurementController@updateMeasurementDetails');
 
-//shopper dashboard page
-Route::get('/shopper-dashboard','ContactController@shopperDashboard');
+// register shopper information 
+Route::match(['get', 'post'], '/shopper-save', 'ShoperController@saveShoperInfo');
+// verify shopper email
+Route::get('/verify', 'ShoperController@verifyShopper');
+//shopper dashboard
+Route::get('/shopper-dashboard','ShoperController@shopperDashboard');
 //Create Product
-Route::get('/create-product','ContactController@createProductSample');
+Route::get('/create-product','ShoperController@createProductSample');
 
 // prevent route if trying to access without login
 Route::group(['middleware' => 'front'], function() {
@@ -269,11 +275,6 @@ Route::group(["middleware" => "admin"], function() {
 		'as'   => 'add-product'
 	]);
 
-	Route::post('/product/save', [
-		'uses' => 'ProductController@saveProduct',
-		'as'   => 'new-product'
-	]);
-
 	Route::get('/product/manage', [
 		'uses' => 'ProductController@manageProduct',
 		'as'   => 'manage-product'
@@ -424,6 +425,11 @@ Route::group(["middleware" => "admin"], function() {
 
 });
 
+// save product form admin and shoppers in same route
+Route::post('/product/save', [
+	'uses' => 'ProductController@saveProduct',
+	'as'   => 'new-product'
+]);
 
 // admin login Authentication
 Route::match(['get', 'post'], '/admin-login', 'AdminAuthenticationController@checkAdminLogin');

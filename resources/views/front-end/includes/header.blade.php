@@ -89,6 +89,7 @@
                                             <li><a href="#">About Us</a></li>
                                             <li><a href="#">Contact Us</a></li>
                                             <li><a href="#">Create Shop</a></li>
+                                            <li><a href="#">Shopper Dashboard</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -328,11 +329,16 @@
                                                 @foreach($customCategories as $customCat)
                                                     <li><a href="{{ asset('/custom-product/'.$customCat->url) }}">{{ $customCat->category_name }}</a></li>
                                                 @endforeach
+                                                <li><a href="{{ url('tailors-shop') }}">Tailors Shop</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">About Us</a></li>
                                         <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
-                                        <li><a href="{{ url('register') }}#top-review">Create Shop</a></li>
+                                        @if(Session::has('shopperId'))
+                                            <li><a href="{{ url('shopper-dashboard') }}">Shopper Dashboard</a></li>
+                                        @else
+                                            <li><a href="{{ url('register') }}#top-review">Create Shop</a></li>
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>

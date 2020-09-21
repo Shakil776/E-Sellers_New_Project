@@ -52,24 +52,24 @@ class ProductController extends Controller
 
    //save product
     public function saveProduct(Request $request) {
+        // $data = $request->all();
+        // echo "<pre>"; print_r($data); die;
         
         $this->productInfoValidation($request);
         $imageUrl_front = $this->productImageUpload($request);
         $imageUrl_back = $this->productBackImageUpload($request);
         $this->productBasicInfoSave($request, $imageUrl_front, $imageUrl_back);
 
-        return redirect()->back()->with('success', 'Product Info Save Successfully.');
+        return redirect()->back()->withSuccess('Product Info Save Successfully.');
     }
 
     // product info validate
     protected function productInfoValidation($request) {
 
         $this->validate($request, [
-            'manufacturer_id' => 'required',
             'product_name' => 'required',
             'product_price' => 'required',
             'product_code' => 'required',
-            'status_id' => 'required',
             'short_description' => 'required',
             'long_description' => 'required',
             'product_image' => 'required|image|mimes:jpeg,png,jpg|max:4096',
@@ -118,9 +118,20 @@ class ProductController extends Controller
         if(empty($request->custom_category_id)){
             $request->custom_category_id = 0;
         }
+        if(empty($request->shopper_id)){
+            $request->shopper_id = 0;
+        }
+        if(empty($request->manufacturer_id)){
+            $request->manufacturer_id = 0;
+        }
+        if(empty($request->status_id)){
+            $request->status_id = 0;
+        }
+
         $product->category_id          = $request->category_id;
         $product->custom_category_id   = $request->custom_category_id;
         $product->manufacturer_id      = $request->manufacturer_id;
+        $product->shopper_id           = $request->shopper_id;
         $product->product_name         = $request->product_name;
         $product->product_price        = $request->product_price;
         $product->product_code         = $request->product_code;

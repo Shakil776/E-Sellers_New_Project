@@ -1,6 +1,6 @@
 @extends('front-end.master')
 
-@section('title', 'Select Your Dress')
+@section('title', 'Tailors Shop Product')
 
 @section('main-content')
 
@@ -10,14 +10,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>{{ $customCategories->category_name }}</h2>
+                        <h2>Tailors Shop Product</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/')}}">Home</a></li>
-                            <li class="breadcrumb-item active">{{ $customCategories->category_name }}</li>
+                            <li class="breadcrumb-item active">Tailor Products</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,7 +33,7 @@
             <div class="page-main-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 class="text-center select-desing-tab">Select Your Desired {{ $customCategories->category_name }} Form The List</h4>
+                            <h4 class="text-center select-desing-tab">Select Your Desired Products Form The List</h4>
                             <div class="collection-product-wrapper">
                                 <div class="product-top-filter">
                                     <div class="row">
@@ -53,7 +53,7 @@
                                                 </div>
 
                                                     <div class="collection-view">
-                                                    <h4>{{ $customCategories->category_name }}</h4>
+                                                    <h4></h4>
                                                 </div>
                                                     
                                                 <div class="collection-grid-view" style="opacity: 1;">
@@ -73,23 +73,23 @@
 
                                 <div class="product-wrapper-grid" style="opacity: 1;">
                                     <div class="row margin-res">
-                                    @foreach($allCustomProducts as $customProduct)
+                                    @foreach($allTailorProducts as $allTailorProduct)
                                         <div class="col-lg-3">
                                             
                                             <div class="product-box">
                                                 <div class="img-wrapper">
                                                     <div class="front">
-                                                        <a href="{{ asset('/dress-details/'.$customProduct->id) }}" class="bg-size blur-up lazyloaded"><img src="{{ asset($customProduct->product_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                        <a href="{{ asset('/dress-details/'.$allTailorProduct->id) }}" class="bg-size blur-up lazyloaded"><img src="{{ asset($allTailorProduct->product_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                                     </div>
                                                     <div class="back">
-                                                        <a href="{{ asset('/dress-details/'.$customProduct->id) }}" class="bg-size blur-up lazyloaded"><img src="{{ asset($customProduct->back_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                        <a href="{{ asset('/dress-details/'.$allTailorProduct->id) }}" class="bg-size blur-up lazyloaded"><img src="{{ asset($allTailorProduct->back_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-detail">
                                                     <div>
 
                                                     <div class="rating-block">
-                                                        <?php $rating = round($customProduct->rating); ?>
+                                                        <?php $rating = round($allTailorProduct->rating); ?>
 
                                                         @for($x = 5; $x > 0; $x--)
                                                             @php 
@@ -105,10 +105,10 @@
                                                         @endfor
                                                     </div>
 
-                                                        <a href="{{ asset('/dress-details/'.$customProduct->id) }}">
-                                                            <h6>{{ $customProduct->product_name }}</h6>
+                                                        <a href="{{ asset('/dress-details/'.$allTailorProduct->id) }}">
+                                                            <h6>{{ $allTailorProduct->product_name }}</h6>
                                                         </a>
-                                                        <h4>TK. {{ $customProduct->product_price }}</h4>
+                                                        <h4>TK. {{ $allTailorProduct->product_price }}</h4>
                                                     </div>
                                                 </div>
                                             </div>

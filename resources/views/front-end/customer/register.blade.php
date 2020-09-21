@@ -4,24 +4,19 @@
 
 @section('main-content')
 
-    {{-- message --}}
-     @if(Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-          <strong>Success! </strong>  {{ Session::get('success') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        @if(Session::has('success'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:black;font-size:18px;">{{ Session::get('success') }}</p> 
         </div>
-    @endif
+        @endif
 
-    @if(Session::has('error'))
-        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-          <strong>Ooops! </strong>  {{ Session::get('error') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        @if(Session::has('error'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:red;font-size:18px;">{{ Session::get('error') }}</p> 
         </div>
-    @endif
+        @endif
+
+
 
     {{-- laravel validation error show message --}}
     @if ($errors->any())
@@ -147,39 +142,47 @@
                                     <h4 class="text-center">Personal Information For Shopper</h4>
                                 </div>
                                 
-                                <form class="theme-form" action="#" method="post">
+                                <form class="theme-form" action="{{ url('shopper-save') }}" method="post" enctype="multipart/form-data">
+                                @csrf
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <label for="csname">Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="csname" id="csname" placeholder="Full Name" required="" autocomplete="off">
+                                            <label for="csname">Shop Owner Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="owner_name" id="csname" placeholder="Shop Owner Full Name" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="csemail">Email <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" name="csemail" id="csemail" placeholder="Email" required="" autocomplete="off">
+                                            <input type="email" class="form-control" name="email" id="csemail" placeholder="Email" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <label for="csname">Shop Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="csname" id="csname" placeholder="Shop Name" required="" autocomplete="off">
+                                            <input type="text" class="form-control" name="shop_name" id="csname" placeholder="Shop Name" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
                                         <div class="col-md-6">
                                             <label for="csmobile">Mobile Number <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" name="csmobile" id="csmobile" placeholder="Mobile Number" required="" autocomplete="off">
-                                            <span class="text-danger"></span>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="cspassword">Password <span class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" name="cspassword" id="cspassword" placeholder="Password" required="" autocomplete="off">
+                                            <input type="number" class="form-control" name="mobile" id="csmobile" placeholder="Mobile Number" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
+                                        
+                                        <div class="col-md-6">
+                                            <label for="cspassword">Password <span class="text-danger">*</span></label>
+                                            <input type="password" class="form-control" name="password" id="cspassword" placeholder="Password" required="" autocomplete="off">
+                                            <span class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="csusername">NID/Birthdate/Passport <small>(max 200 KB)</small><span class="text-danger">*</span></label>
+                                            <input type="file" accept="image/*" class="form-control" name="nid_image" id="nid_image" >
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-row">
                                         <div class="col-md-6">
                                             <label for="csusername">NID/Birthdate/Passport <small>(max 200 KB)</small><span class="text-danger">*</span></label>
                                             <input type="file" accept="image/*" class="form-control" name="category_icon" id="category_icon" >
@@ -190,25 +193,25 @@
                                             <input type="text" class="form-control" name="csusername" id="csusername" placeholder="User Name" required="" autocomplete="off">
                                             <span class="text-danger"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="card-header mb-4">
                                         <h4 class="text-center">Shopper Address</h4>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <label for="csstate">Region/State  <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="csstate" id="state" placeholder="Region/State" autocomplete="off">
+                                            <input type="text" class="form-control" name="state" id="state" placeholder="Region/State" autocomplete="off">
                                         </div>
 
                                     <div class="col-md-6">
                                             <label for="city">Town/City  <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="cscity" id="cscity" placeholder="Town/City" autocomplete="off">
+                                            <input type="text" class="form-control" name="city" id="cscity" placeholder="Town/City" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <label for="address">House/Flat Address  <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="csaddress" id="csaddress" placeholder="House/Flat Address" autocomplete="off" rows="5"></textarea>
+                                            <textarea class="form-control" name="address" id="address" placeholder="House/Flat Address" autocomplete="off" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="card-header mb-4">
@@ -217,7 +220,7 @@
                                     <div class="form-row checkbox-level">
                                         <div class="col-md-12">
                                             <label for="csservice">Give A Breif About Your Service</label>
-                                            <textarea class="form-control" name="csservice" id="csservice" placeholder="About Your Service" autocomplete="off" rows="5"></textarea>
+                                            <textarea class="form-control" name="service_brief" id="csservice" placeholder="About Your Service" autocomplete="off" rows="5"></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <br>
@@ -225,19 +228,19 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label for="sk"><input type="checkbox" id="sk">Salwar Kamiz</label>
-                                                    <label for="kr"><input type="checkbox" id="kr">Kurta</label>
-                                                    <label for="pn"><input type="checkbox" id="pn">Panzabi</label>
+                                                    <label for="sk"><input type="checkbox" name="service_provide[]" value="Salwar Kamiz">Salwar Kamiz</label>
+                                                    <label for="kr"><input type="checkbox" name="service_provide[]" value="Kurta">Kurta</label>
+                                                    <label for="pn"><input type="checkbox" name="service_provide[]" value="Panzabi">Panzabi</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="nw"><input type="checkbox" id="nw">Night Ware</label>
-                                                    <label for="le"><input type="checkbox" id="le">Lehegas</label>
-                                                    <label for="gn"><input type="checkbox" id="gn">Gowns</label>
+                                                    <label for="nw"><input type="checkbox" name="service_provide[]" value="Night Ware">Night Ware</label>
+                                                    <label for="le"><input type="checkbox" name="service_provide[]" value="Lehegas">Lehegas</label>
+                                                    <label for="gn"><input type="checkbox" name="service_provide[]" value="Gowns">Gowns</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="bbd"><input type="checkbox" id="bbd">Block Batik Dress</label>
-                                                    <label for="ab"><input type="checkbox" id="ab">Abaya & Borka</label>
-                                                    <label for="am"><input type="checkbox" id="am">Ambroidery</label>
+                                                    <label for="bbd"><input type="checkbox" name="service_provide[]" value="Block Batik Dress">Block Batik Dress</label>
+                                                    <label for="ab"><input type="checkbox" name="service_provide[]" value="Abaya & Borka">Abaya & Borka</label>
+                                                    <label for="am"><input type="checkbox" name="service_provide[]" value="Ambroidery">Ambroidery</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,13 +249,13 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label for="entry"><input type="radio" id="entry" name="level" value="entry">Entry Level</label>
+                                                    <label for="entry"><input type="radio" id="entry" name="level" value="Entry Level">Entry Level</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="intermidiate"><input type="radio" id="intermidiate" name="level" value="intermidiate">Intermediate Level</label>
+                                                    <label for="intermidiate"><input type="radio" id="intermidiate" name="level" value="Intermediate Level">Intermediate Level</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="expert"><input type="radio" id="expert" name="level" value="expert">Expert</label>
+                                                    <label for="expert"><input type="radio" id="expert" name="level" value="Expert">Expert</label>
                                                 </div>
                                             </div>
                                         </div>

@@ -28,16 +28,6 @@ class ContactController extends Controller
         return view('front-end.content.contact');
     }
 
-    //shopkeeper dashboard
-    public function shopperDashboard(){
-        return view('front-end.custom-category.shopkeeper-dashboad');
-    }
-
-    //create product page
-    public  function createProductSample(){
-        return view('front-end.custom-category.create-product');
-    }
-
     // add contact details
     public function contact(Request $request){
         if($request->ajax()){

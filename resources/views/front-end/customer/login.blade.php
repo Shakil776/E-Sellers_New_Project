@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>customer's login</h2>
+                        <h2>login</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -66,7 +66,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <h3>Login</h3>
+                    <h3>Customer Login</h3>
                     <div class="theme-card">
                         <form class="theme-form" action="{{ url('login-check') }}" method="post">
                             @csrf

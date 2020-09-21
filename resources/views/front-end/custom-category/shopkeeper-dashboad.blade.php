@@ -1,8 +1,14 @@
 @extends('front-end.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Shopper Dashboard')
 
 @section('main-content')
+
+        @if(Session::has('success'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:black;font-size:18px;">{{ Session::get('success') }}</p> 
+        </div>
+        @endif
 
    <!-- breadcrumb start -->
     <div class="breadcrumb-section">
@@ -56,37 +62,37 @@
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>Full Name</b></p> 
-                                                <p>Jhon Doe</p>
+                                                <p>{{ $shopperInfo['owner_name'] }}</p>
                                             </span>
                                         </div>
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                             <p><b>Email</b></p> 
-                                            <p>simple@gmail.com</p>
+                                            <p>{{ $shopperInfo['email'] }}</p>
                                             </span>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <span class="shoper-name">
                                             <p><b>User Name</b></p> 
                                             <p>Top-10</p>
                                             </span>
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>NID/Birthdate/Passport</b></p> 
-                                                <p><img style="width:300px;height:200px" src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" alt=""></p>
+                                                <p><img style="width:300px;height:200px" src="{{ asset($shopperInfo['nid_image']) }}" alt=""></p>
                                             </span>
                                         </div>
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                             <p><b>Shop Name</b></p> 
-                                            <p>Top 10</p>
+                                            <p>{{ $shopperInfo['shop_name'] }}</p>
                                             </span>
                                         </div>
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>Mobile Number</b></p> 
-                                                <p>013012456</p>
+                                                <p>{{ $shopperInfo['mobile'] }}</p>
                                             </span>
                                         </div>
                                     </div>
@@ -98,7 +104,7 @@
                                          <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>My Address</b></p> 
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, aut nulla libero magni nesciunt, </p>
+                                                <p>{{ $shopperInfo['address'] }}, {{ $shopperInfo['state'] }}, {{ $shopperInfo['city'] }}</p>
                                             </span>
                                         </div>
                                     </div>
@@ -110,25 +116,22 @@
                                         <div class="col-sm-8">
                                             <span class="shoper-name">
                                                 <p><b>Some Information of My Service</b></p> 
-                                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque ea perferendis libero ipsa ipsam officia unde optio aliquam exercitationem sequi. Ad, inventore sunt impedit adipisci non voluptates. Earum, consectetur minima?</p>
+                                                <p>{{ $shopperInfo['service_brief'] }}</p>
                                             </span>
                                         </div>
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>Which Type of Service I provide</b></p>
                                                 <ul>
-                                                    <li>Salwar Kamiz</li>
-                                                    <li>Panzabi</li>
-                                                    <li>Korta</li>
+                                                    <li>{{ $shopperInfo['service_provide'] }}</li>
+                                                    <!-- <li>Korta</li> -->
                                                 </ul>
                                             </span>
                                         </div>  
                                         <div class="col-sm-6">
                                             <span class="shoper-name">
                                                 <p><b>My Experience</b></p> 
-                                                <p>
-                                                    Mid Level
-                                                </p>
+                                                <p>{{ $shopperInfo['level'] }}</p>
                                             </span>
                                         </div>
                                         <br>
@@ -183,198 +186,53 @@
                                 <div class="collection-product-wrapper">
                                     <div class="product-wrapper-grid addvanced-app" style="">
                                         <div class="row margin-res">
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                                <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
+                                        @if(!empty($shopperProducts))
+                                            @foreach($shopperProducts as $shopperProduct)
+                                                <div class="col-sm-3">
+                                                    <div class="product-box">
+                                                        <div class="img-wrapper">
+                                                            <div class="front">
+                                                                    <a href="#"><img src="{{ asset($shopperProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
+                                                                </div>
+                                                            <div class="cart-info cart-wrap">
+                                                                <button title="Add to Trailers Shop">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </button>
+                                                                <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
+                                                                    <i class="far fa-trash-alt"></i>
+                                                                </a>
                                                             </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
+                                                        <div class="product-detail">
+                                                            <div>
 
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                                <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
+                                                            <div class="rating-block">
+                                                                   <?php $rating = round($shopperProduct->rating); ?>
+
+                                                                    @for($x = 5; $x > 0; $x--)
+                                                                        @php 
+                                                                            if($rating > 0.5){
+                                                                                echo '<i class="fas fa-star"></i>';
+                                                                            }elseif($rating <= 0 ){
+                                                                                echo '<i class="far fa-star"></i>';
+                                                                            }else{
+                                                                                echo '<i class="fas fa-star-half-alt"></i>';
+                                                                            }
+                                                                            $rating--;      
+                                                                        @endphp
+                                                                    @endfor
+                                                                </div>
+                                                            <a href="#">
+                                                                <h6>{{ $shopperProduct->product_name }}</h6>
+                                                            </a>
+                                                            <h4>TK. {{ $shopperProduct->product_price }}</h4>
                                                             </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
-
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                                <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
-                                                            </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
+                                            @endforeach
+                                        @endif
 
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                                <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
-                                                            </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
-
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                                <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
-                                                            </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
-
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
-                                                        </div>
-                                                        <div class="cart-info cart-wrap">
-                                                            <button title="Add to Trailers Shop">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                            <a href="javascript:void(0)" title="Hide Form The Trailers Shop">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-detail">
-                                                        <div>
-
-                                                        <div class="rating-block">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </div>
-                                                        <a href="#">
-                                                            <h6>Salwar kamiz</h6>
-                                                        </a>
-                                                        <h4>TK. 123</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -405,11 +263,12 @@
                                     <h4 class="text-left">Create Product</h4>
                                 </div>
                                 <div class="row">
+                                @if(!empty($lastInsertProduct))
                                     <div class="col-sm-3">
                                         <div class="product-box">
                                             <div class="img-wrapper">
                                                 <div class="front">
-                                                    <a href="#"><img src="{{ url('frontEnd') }}/images/make-design/front-1.jpg" class="img-fluid" alt="" style="display:block"></a>
+                                                    <a href="#"><img src="{{ asset($lastInsertProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
                                                 </div>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -422,20 +281,31 @@
                                             </div>
                                             <div class="product-detail">
                                                 <div>
-                                                    <div class="rating-block">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
+                                                <div class="rating-block">
+                                                        <?php $rating = round($lastInsertProduct->rating); ?>
+
+                                                        @for($x = 5; $x > 0; $x--)
+                                                            @php 
+                                                                if($rating > 0.5){
+                                                                    echo '<i class="fas fa-star"></i>';
+                                                                }elseif($rating <= 0 ){
+                                                                    echo '<i class="far fa-star"></i>';
+                                                                }else{
+                                                                    echo '<i class="fas fa-star-half-alt"></i>';
+                                                                }
+                                                                $rating--;      
+                                                            @endphp
+                                                        @endfor
                                                     </div>
                                                     <a href="#">
-                                                        <h6>Salwar kamiz</h6>
+                                                        <h6>{{ $lastInsertProduct->product_name }}</h6>
                                                     </a>
-                                                    <h4>TK. 123</h4>
+                                                    <h4>TK. {{ $lastInsertProduct->product_price }}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                @endif
                                     <div class="col-sm-3">
                                         <div class="create-product">
                                             <a href="{{ url('create-product')}}"  title="Create A Product">

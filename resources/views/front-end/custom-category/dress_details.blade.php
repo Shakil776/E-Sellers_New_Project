@@ -64,7 +64,13 @@
                     <div class="col-lg-6 rtl-text">
                         <div class="product-right">
                             <h2 class="mb-0">{{ $productDetails->product_name }}</b></h2>
-                            <h5 class="mb-2">by <a href="#">{{ $brandName->manufacturer_name }}</a></h5>
+                            <h5 class="mb-2">by <a href="#">
+                            @if($brandName)
+                                {{ $brandName->manufacturer_name }}
+                            @else
+                                {{ $shopName->shop_name }}
+                            @endif
+                            </a></h5>
                             <h3>TK. {{ $productDetails->product_price }}</h3>
                             <h3>Code. {{ $productDetails->product_code }}</h3>
 

@@ -91,6 +91,7 @@ class UserController extends Controller
         }
     }
 
+    
     // customer profile
     public function profile(Request $request){
         $user_id = Session::get('customerId');
