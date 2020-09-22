@@ -88,10 +88,18 @@
                                             </li>
                                             <li><a href="#">About Us</a></li>
                                             <li><a href="#">Contact Us</a></li>
+<<<<<<< HEAD
                                             @if(Session::has('shopperId'))
                                             <li><a href="#">Shopper Dashboard</a></li>
                                             @else
                                                 <li><a href="#">Create Shop</a></li>
+=======
+                                            <li><a href="#">Create Shop</a></li>
+                                            @if(Session::has('shopperId'))
+                                                <li><a href="{{ url('shopper-dashboard') }}">Shopper Dashboard</a></li>
+                                            @else
+                                                <li><a href="{{ url('register') }}">Create Shop</a></li>
+>>>>>>> 58bed966e14928545226f4eca797f657b7111a13
                                             @endif
                                         </ul>
                                     </nav>

@@ -182,18 +182,6 @@
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-row">
-                                        <div class="col-md-6">
-                                            <label for="csusername">NID/Birthdate/Passport <small>(max 200 KB)</small><span class="text-danger">*</span></label>
-                                            <input type="file" accept="image/*" class="form-control" name="category_icon" id="category_icon" >
-                                            <span class="text-danger"></span>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="csusername">User Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="csusername" id="csusername" placeholder="User Name" required="" autocomplete="off">
-                                            <span class="text-danger"></span>
-                                        </div>
-                                    </div> -->
                                     <div class="card-header mb-4">
                                         <h4 class="text-center">Shopper Address</h4>
                                     </div>
@@ -228,19 +216,19 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label for="sk"><input type="checkbox" name="service_provide[]" value="Salwar Kamiz">Salwar Kamiz</label>
-                                                    <label for="kr"><input type="checkbox" name="service_provide[]" value="Kurta">Kurta</label>
-                                                    <label for="pn"><input type="checkbox" name="service_provide[]" value="Panzabi">Panzabi</label>
+                                                    <label for="service_provide[1]"><input type="checkbox" name="service_provide[1]" value="SalwarKamiz">Salwar Kamiz</label>
+                                                    <label for="service_provide[2]"><input type="checkbox" name="service_provide[2]" value="Kurta">Kurta</label>
+                                                    <label for="service_provide[3]"><input type="checkbox" name="service_provide[3]" value="Panzabi">Panzabi</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="nw"><input type="checkbox" name="service_provide[]" value="Night Ware">Night Ware</label>
-                                                    <label for="le"><input type="checkbox" name="service_provide[]" value="Lehegas">Lehegas</label>
-                                                    <label for="gn"><input type="checkbox" name="service_provide[]" value="Gowns">Gowns</label>
+                                                    <label for="service_provide[4]"><input type="checkbox" name="service_provide[4]" value="Night Ware">Night Ware</label>
+                                                    <label for="service_provide[5]"><input type="checkbox" name="service_provide[5]" value="Lehegas">Lehegas</label>
+                                                    <label for="service_provide[6]"><input type="checkbox" name="service_provide[6]" value="Gowns">Gowns</label>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="bbd"><input type="checkbox" name="service_provide[]" value="Block Batik Dress">Block Batik Dress</label>
-                                                    <label for="ab"><input type="checkbox" name="service_provide[]" value="Abaya & Borka">Abaya & Borka</label>
-                                                    <label for="am"><input type="checkbox" name="service_provide[]" value="Ambroidery">Ambroidery</label>
+                                                    <label for="service_provide[7]"><input type="checkbox" name="service_provide[7]" value="Block Batik Dress">Block Batik Dress</label>
+                                                    <label for="service_provide[8]"><input type="checkbox" name="service_provide[8]" value="Abaya & Borka">Abaya & Borka</label>
+                                                    <label for="service_provide[9]"><input type="checkbox" name="service_provide[9]" value="Ambroidery">Ambroidery</label>
                                                 </div>
                                             </div>
                                         </div>

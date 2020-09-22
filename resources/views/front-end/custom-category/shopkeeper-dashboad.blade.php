@@ -31,6 +31,14 @@
         </div>
     </div>
     <!-- breadcrumb end -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <br><br>
+                <button class="btn btn-solid" style="float: right;">Log Out</button>
+            </div>
+        </div>
+    </div>
 
     <!-- shopkeeper dashboard content -->
     <section class="register-page section-b-space tab-product">
@@ -47,7 +55,7 @@
                         <li class="nav-item"><a class="newnav nav-link" id="productlist" data-toggle="tab" href="#productlist1" role="tab" aria-selected="true"><b>Create Product</b></a>
                             <div class="material-border"></div>
                         </li>
-                        <li class="nav-item"><a class="newnav nav-link" id="helpsupport" data-toggle="tab" href="#helpsupport" role="tab" aria-selected="true"><b>Help & Support</b></a>
+                        <li class="nav-item"><a class="newnav nav-link" id="support" data-toggle="tab" href="#productlist2" role="tab" aria-selected="true"><b>Help & Support</b></a>
                             <div class="material-border"></div>
                         </li>
                     </ul>
@@ -124,7 +132,6 @@
                                                 <p><b>Which Type of Service I provide</b></p>
                                                 <ul>
                                                     <li>{{ $shopperInfo['service_provide'] }}</li>
-                                                    <!-- <li>Korta</li> -->
                                                 </ul>
                                             </span>
                                         </div>  
@@ -135,7 +142,7 @@
                                             </span>
                                         </div>
                                         <br>
-                                        <button class="btn btn-solid">Edit Profile</button> 
+                                        <!-- <button class="btn btn-solid">Edit Profile</button>  -->
                                     </div>
                                 </div>
                             </div>
@@ -317,10 +324,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="helpsupport" role="tabpanel" aria-labelledby="helpsupport">
+                        <div class="tab-pane fade" id="productlist2" role="tabpanel" aria-labelledby="support">
                             <div class="theme-card">
                                 <div class="card-header mb-4">
-                                    <h4 class="text-center">Personal Information For Customer</h4>
+                                    <h4 class="text-center">Help & Support</h4>
                                 </div>
                                 
                             </div>

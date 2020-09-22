@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/bootstrap.css">
 
     <!-- Theme css -->
-    <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/color1.css?v=1.2" media="screen" id="color">
+    <link rel="stylesheet" type="text/css" href="{{ url('frontEnd') }}/css/color1.css?v=1.3" media="screen" id="color">
 
 
 </head>
@@ -92,7 +92,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js"></script>
 
     <!-- Theme js-->
-    <script src="{{ url('frontEnd') }}/js/script.js?v=1.1"></script>
+    <script src="{{ url('frontEnd') }}/js/script.js?v=1.2"></script>
 
     <script>
         $(window).on('load', function () {
