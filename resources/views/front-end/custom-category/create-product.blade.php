@@ -46,7 +46,6 @@
                     <form class="theme-form" action="{{ route('new-product') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         
-
                         <div class="form-row">
 
                             <div class="col-md-6">
@@ -90,14 +89,14 @@
                         <div class="form-row">
                             
                             <div class="col-md-6">
-                                <label for="email">Product Front Image <span class="text-danger">*</span></label>
+                                <label for="email">Product Main Image <span class="text-danger">*</span></label>
                                 <input type="file" accept="image/*" name="product_image" id="images" required="">
                                 <span class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="email">Product Back Image <span class="text-danger">*</span></label>
-                                <input type="file" accept="image/*" name="back_image" id="images" required="">
+                                <label for="email">Product Design Image <span class="text-danger">*</span></label>
+                                <input type="file" accept="image/*" name="images[]" multiple="" id="images" required="">
                                 <span class="text-danger"></span>
                             </div>
                         </div>

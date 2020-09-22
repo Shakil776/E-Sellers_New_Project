@@ -107,7 +107,8 @@ class CustomeCategoryController extends Controller
     // custom dress/product details
     public function dressDetails($id = null) {
         //get product details of particular id
-        $productDetails = Product::with('attributes')->where('id', $id)->first();
+        $productDetails = Product::with('designImages')->with('attributes')->where('id', $id)->first();
+        // return response($productDetails); die;
         // $productDetails = json_decode(json_encode($productDetails));
         
         $brandName = Manufacturer::where('id', $productDetails->manufacturer_id)->first();
@@ -133,14 +134,14 @@ class CustomeCategoryController extends Controller
         // $reviews_count = Review::where('product_id', $id)->count('review'); 
 
         $productAltImages = ProductsAlternateImage::where('product_id', $id)->get();
-        $designImages = DesignImage::where('status', 1)->inRandomOrder()->take(12)->get();
+        // $designImages = DesignImage::where('status', 1)->inRandomOrder()->take(12)->get();
 
         // $customerDesignImageId = Session::get('designImageId');
         // if($customerDesignImageId){
         //     $customerDesignImage = DesignImage::where('id', $customerDesignImageId)->first();
         // }
         
-        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'designImages', 'customeCategoryName', 'shopName'));
+        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'customeCategoryName', 'shopName'));
     }
 
     //select service

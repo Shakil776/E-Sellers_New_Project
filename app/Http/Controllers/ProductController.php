@@ -9,6 +9,7 @@ use App\Product;
 use App\ProductStatus;
 use App\ProductsAttributes;
 use App\CustomeCategory;
+use App\DesignImage;
 use Image;
 use DB;
 use Session;
@@ -73,7 +74,6 @@ class ProductController extends Controller
             'short_description' => 'required',
             'long_description' => 'required',
             'product_image' => 'required|image|mimes:jpeg,png,jpg|max:4096',
-            'back_image' => 'required|image|mimes:jpeg,png,jpg|max:4096',
             'publication_status' => 'required'
         ]);
     }
@@ -104,6 +104,8 @@ class ProductController extends Controller
             $image = Image::make($productImage);
             $image->resize(650, 700)->save($directory . $imageName); 
             $imageUrl_back   = $directory . $imageName;
+        }else{
+            $imageUrl_back = "";
         }
         return $imageUrl_back;
     }
@@ -127,6 +129,9 @@ class ProductController extends Controller
         if(empty($request->status_id)){
             $request->status_id = 0;
         }
+        if(empty($imageUrl_back)){
+            $imageUrl_back = "";
+        }
 
         $product->category_id          = $request->category_id;
         $product->custom_category_id   = $request->custom_category_id;
@@ -142,6 +147,30 @@ class ProductController extends Controller
         $product->back_image           = $imageUrl_back;
         $product->publication_status   = $request->publication_status;
         $product->save();
+
+        if (!empty($request->images)) {
+
+            if ($request->hasFile('images')) {
+                $images   = $request->file('images');
+
+                foreach ($images as $key => $image) {
+                    $designImage = new DesignImage();
+                    $image_tmp = Image::make($image);
+                    $imageExtension = $image->getClientOriginalExtension();
+                    $imageName      = 'di_'.rand(111, 999999).time().'.'.$imageExtension;
+                    $image_path = 'uploads/design-image/'.$imageName;
+                    Image::make($image_tmp)->resize(650, 700)->save($image_path);
+                    
+                    $designImage->product_id = $product->id;
+                    $designImage->design_image = $image_path;
+                    $designImage->status = 1;
+                    $designImage->save();
+                }
+            }
+        }
+
+
+
     }
 
     // manage product 

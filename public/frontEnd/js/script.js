@@ -1536,7 +1536,7 @@ function addContactDetails(){
     $(window).on('load', function() {
         var value = $("#cutomCategoryCheck").text();
 
-        if(value == 2){
+        if(value != 1){
             $("#custom_design_image").show();
         }else{
             $("#custom_design_image").hide();

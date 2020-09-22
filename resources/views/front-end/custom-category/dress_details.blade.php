@@ -99,7 +99,7 @@
                                     <div class="qty-box">
                                         <div class="row popup-gallery">
 
-                                            @foreach($designImages as $image)
+                                            @foreach($productDetails['designImages'] as $image)
                                             <div class="col-sm-3 guage-image">
                                                 <a href="{{ asset($image->design_image) }}">
                                                     <img src="{{ asset($image->design_image) }}" alt="demo design"></a>

@@ -19,4 +19,8 @@ class Product extends Model
     	return $this->hasMany('App\ProductsAlternateImage', 'product_id');
     }
 
+    public function designImages() {
+    	return $this->hasMany('App\DesignImage', 'product_id');
+    }
+
 }

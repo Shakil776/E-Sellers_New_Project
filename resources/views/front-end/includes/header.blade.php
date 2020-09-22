@@ -88,8 +88,11 @@
                                             </li>
                                             <li><a href="#">About Us</a></li>
                                             <li><a href="#">Contact Us</a></li>
-                                            <li><a href="#">Create Shop</a></li>
+                                            @if(Session::has('shopperId'))
                                             <li><a href="#">Shopper Dashboard</a></li>
+                                            @else
+                                                <li><a href="#">Create Shop</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                 </div>

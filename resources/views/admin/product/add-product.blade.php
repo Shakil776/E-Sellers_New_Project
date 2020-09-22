@@ -126,10 +126,18 @@
 						 </div>
 
 						 <div class="form-group">
-						    <label class="control-label col-sm-2" for="back_image">Product Back Image</label>
+						    <label class="control-label col-sm-2" for="back_image">Product Back Image<span class="text-danger">(Not Required For Guage Fabric Product)</span></label>
 						    <div class="col-sm-10">
 						    	<input type="file" accept="image/*" class="form-control" name="back_image" id="back_image" >
 						    	<span class="text-danger">{{ $errors->has('back_image') ? $errors->first('back_image') : ' ' }}</span>
+						    </div>
+						 </div>
+
+						 <div class="form-group">
+						    <label class="control-label col-sm-2" for="images">Product Design Image<span class="text-danger">(Required Only For Guage Fabric Product)</span></label>
+						    <div class="col-sm-10">
+						    	<input type="file" accept="image/*" class="form-control" name="images[]" multiple="" >
+						    	<span class="text-danger">{{ $errors->has('images') ? $errors->first('images') : ' ' }}</span>
 						    </div>
 						 </div>
 
