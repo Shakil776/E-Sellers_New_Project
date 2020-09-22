@@ -14395,6 +14395,15 @@ body.dark {
 .pixelstrap li a {
   position: relative; }
 
+.pixelstrap li:last-child  a{
+    background-color: var(--theme-deafult);
+    border:1px solid var(--theame-defalult);
+    padding: 9px 15px;
+    margin-top: 34px;
+    margin-right: 22px;
+    color: #fff;
+}
+
 .pixelstrap li .lable-nav {
   position: absolute;
   background-color: var(--theme-deafult);

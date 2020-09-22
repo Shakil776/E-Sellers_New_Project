@@ -62,41 +62,65 @@
 
 
     <!--section start-->
-    <section class="login-page section-b-space">
+     <section class="register-page section-b-space tab-product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <h3>Customer Login</h3>
-                    <div class="theme-card">
-                        <form class="theme-form" action="{{ url('login-check') }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" name="email" id="loginEmail" placeholder="Email" autocomplete="off">
-                                <span class="text-danger">{{ $errors->has('email') ? $errors->first('email') : ' ' }}</span>
+                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                        <li class="nav-item"><a class="newnav nav-link active show" id="profile-top-tab" data-toggle="tab" href="#customar-login" role="tab" aria-selected="true"><b>Customer Login</b></a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item"><a class="newnav nav-link" id="review-top-tab" data-toggle="tab" href="#shopper-login" role="tab" aria-selected="false"><b>Shopper Login</b></a>
+                            <div class="material-border"></div>
+                        </li>
+                    </ul>
+                     <div class="tab-content nav-material" id="top-tabContent">
+                        <div class="tab-pane fade active show" id="customar-login" role="tabpanel" aria-labelledby="profile-top-tab">
+                            <div class="theme-card">
+                                <form class="theme-form" action="{{ url('login-check') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="loginEmail" placeholder="Email" autocomplete="off">
+                                        <span class="text-danger">{{ $errors->has('email') ? $errors->first('email') : ' ' }}</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review">Password</label>
+                                        <input type="password" name="password" autocomplete="off" class="form-control" id="loginPassword" placeholder="Enter your password">
+                                        <span class="text-danger">{{ $errors->has('password') ? $errors->first('password') : ' ' }}</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-solid">Login</button>
+                                    <a href="{{ url('forgot-password') }}" class="text-right text-success" style="margin-left: 30px; color: #000;">Forgot Password?</a>
+                                    <h5 class="text-center" style="text-transform:capitalize; margin-top:15px">
+                                         Haven't any account? <a class="text-right text-success" href="{{ url('/register') }}">Sign Up</a>
+                                    </h5>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="review">Password</label>
-                                <input type="password" name="password" autocomplete="off" class="form-control" id="loginPassword" placeholder="Enter your password">
-                                <span class="text-danger">{{ $errors->has('password') ? $errors->first('password') : ' ' }}</span>
+                        </div>
+                        <div  class="tab-pane fade" id="shopper-login" role="tabpanel" aria-labelledby="review-top-tab">
+                            <div class="theme-card">
+                                <form class="theme-form" action="{{ url('login-check') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="loginEmail" placeholder="Email" autocomplete="off">
+                                        <span class="text-danger">{{ $errors->has('email') ? $errors->first('email') : ' ' }}</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review">Password</label>
+                                        <input type="password" name="password" autocomplete="off" class="form-control" id="loginPassword" placeholder="Enter your password">
+                                        <span class="text-danger">{{ $errors->has('password') ? $errors->first('password') : ' ' }}</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-solid">Login</button>
+                                    <a href="{{ url('forgot-password') }}" class="text-right text-success" style="margin-left: 30px; color: #000;">Forgot Password?</a>
+                                    <h5 class="text-center" style="text-transform:capitalize; margin-top:15px">
+                                         Haven't any account? <a class="text-right text-success" href="{{ url('/register')}} #top-review">Sign Up</a>
+                                    </h5>
+                                </form>
                             </div>
-                            <button type="submit" class="btn btn-solid">Login</button>
-                            <a href="{{ url('forgot-password') }}" class="text-right text-success" style="margin-left: 30px; color: #000;">Forgot Password?</a>
-                            <h5 class="text-center" style="text-transform:capitalize; margin-top:15px">
-                                 Haven't any account? <a class="text-right text-success" href="{{ url('/register') }}">Sign Up</a>
-                            </h5>
-                        </form>
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 right-login">
-                    <h3>New Customer</h3>
-                    <div class="theme-card authentication-right">
-                        <h6 class="title-font">Create A Account</h6>
-                        <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
-                            able to order from our shop. To start shopping click register.</p><a href="{{ url('/register') }}"
-                            class="btn btn-solid">Create an Account</a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>

@@ -112,11 +112,11 @@
                                 <span class="text-danger"></span>
                             </div>
                         </div>
-                        
-
+                        <br><br><br>
+                        <button type="submit" class="btn btn-solid mt-1">Submit</button>
                         </div>
 
-                        <button type="submit" class="btn btn-solid mt-1">Submit</button>
+                        
                     </form>  
                 </div>
             </div>
