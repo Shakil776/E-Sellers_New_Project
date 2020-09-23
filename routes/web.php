@@ -42,6 +42,12 @@ Route:: get('/affiliates', 'ContactController@affiliates');
 Route::get('/contact-us', 'ContactController@showContact');
 // contact us
 Route::post('/contact', 'ContactController@contact');
+// shopper product details
+Route::get('/shopper-product-details','ContactController@shopperProductDetails');
+//about us
+Route::get('/about-us-page','ContactController@aboutUs');
+
+
 // user upload design image 
 // Route::match(['get', 'post'], '/user-upload-image', 'DesignImageController@userUploadDesignImage');
 //Select Service

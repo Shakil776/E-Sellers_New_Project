@@ -4055,9 +4055,10 @@ header {
         background: #ff4c3b;
       }
     .static-content p {
-        font-size: 15px;
+        font-size: 16px;
         color: #777777;
-        line-height: 1.5;
+        text-align: justify;
+        line-height: 1.8;
     }
     .static-content ul{
       list-style-type: circle;
@@ -14395,7 +14396,7 @@ body.dark {
 .pixelstrap li a {
   position: relative; }
 
-.pixelstrap li:last-child  a{
+.pixelstrap li.create-shop-menubar  a{
     background-color: var(--theme-deafult);
     border:1px solid var(--theame-defalult);
     padding: 9px 15px;

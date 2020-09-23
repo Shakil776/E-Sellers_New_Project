@@ -212,7 +212,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <br>
-                                            <label for="csservice">Which Type of Service Do you Provide ?</label>
+                                            <label for="csservice">Which Type of Service Do you Provide ? (Please Select More than One)</label>
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">

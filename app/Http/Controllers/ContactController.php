@@ -28,6 +28,15 @@ class ContactController extends Controller
         return view('front-end.content.contact');
     }
 
+    // product details page
+    public function shopperProductDetails(){
+        return view('front-end.custom-category.shopper-product-details');
+    }
+
+    // about us page
+    public function aboutUs(){
+        return view('front-end.content.about-us');
+    }
     // add contact details
     public function contact(Request $request){
         if($request->ajax()){

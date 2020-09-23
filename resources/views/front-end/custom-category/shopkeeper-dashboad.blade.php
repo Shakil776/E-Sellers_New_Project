@@ -35,8 +35,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <br><br>
-                <a href="{{ url('shopper-logout') }}" onclick="event.preventDefault(); document.getElementById('shopper-logout-form').submit();" class="btn btn-solid" style="float: right;">Log Out</a>
-                <form id="shopper-logout-form" action="{{ url('shopper-logout') }}" method="POST" style="display: none;">
+                <a href="{{ url('shopper-logout') }}#shopper-login" onclick="event.preventDefault(); document.getElementById('shopper-logout-form').submit();" class="btn btn-solid" style="float: right;">Log Out</a>
+                <form id="shopper-logout-form" action="{{ url('shopper-logout') }}#shopper-login" method="POST" style="display: none;">
                     @csrf
                 </form>
             </div>

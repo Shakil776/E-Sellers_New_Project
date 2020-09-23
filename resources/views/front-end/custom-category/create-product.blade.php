@@ -68,7 +68,6 @@
                                 <label for="state">Product Code <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code" autocomplete="off">
                             </div>
-                            
                             <div class="col-md-6">
                                 <label for="password">Product Price <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" name="product_price" id="product_price" placeholder="Price" required="" autocomplete="off">

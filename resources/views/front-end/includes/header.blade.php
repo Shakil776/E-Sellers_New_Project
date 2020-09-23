@@ -90,9 +90,9 @@
                                             <li><a href="#">Contact Us</a></li>
                                             
                                             @if(Session::has('shopperId'))
-                                                <li><a href="#">Shopper Dashboard</a></li>
+                                                <li class="create-shop-menubar"><a href="#">Shopper Dashboard</a></li>
                                             @else
-                                                <li><a href="#">Create Shop</a></li>
+                                                <li class="create-shop-menubar"><a href="#">Create Shop</a></li>
                                             @endif
                                         </ul>
                                     </nav>
@@ -336,13 +336,13 @@
                                                 <li><a href="{{ url('tailors-shop') }}">Tailors Shop</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="{{ url('about-us-page')}}">About Us</a></li>
                                         <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
 
                                         @if(Session::has('shopperId'))
-                                            <li><a href="{{ url('shopper-dashboard') }}">Shopper Dashboard</a></li>
+                                            <li class="create-shop-menubar"><a href="{{ url('shopper-dashboard') }}">Shopper Dashboard</a></li>
                                         @else
-                                            <li><a href="{{ url('register') }}#top-review">Create Shop</a></li>
+                                            <li class="create-shop-menubar"><a href="{{ url('register') }}#top-review">Create Shop</a></li>
                                         @endif
                                     </ul>
                                 </nav>
