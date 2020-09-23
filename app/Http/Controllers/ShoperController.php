@@ -11,9 +11,54 @@ use Validator;
 use Session;
 use Mail;
 use Image;
+use Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class ShoperController extends Controller
 {
+    // shopper login check
+    public function checkShopperLogin(Request $request){
+        // return response($request->all()); die;
+
+        $validator = Validator::make(array(
+            "email" => $request->email,
+            "password" => $request->password
+        ),array(
+            "email" => "required",
+            "password" => "required"
+        ));
+
+        if ($validator->fails()) {
+            return redirect('login')->withErrors($validator)->withInput();
+        } else {
+            $shopper_info = array(
+                "email" => $request->email,
+                "password" => $request->password,
+                'is_varified' => 1
+            );
+            
+
+            if (auth()->guard('shopper')->attempt($shopper_info)) {
+                $shopperId = Auth::guard('shopper')->user()->id;
+                Session::put('shopperId', $shopperId);
+                return redirect("/shopper-dashboard");
+            } else{
+                $error_message = "Invalid Email or Password!";
+                return redirect()->back()->withErrors($error_message);
+            }
+        }
+    }
+
+    // logout
+    public function shopperLogout(){
+        Session::forget('shopperId');
+        if(Auth::guard("shopper")){
+            Auth::guard("shopper")->logout();
+            return redirect('/login');
+        }
+    }
+
     // save info
     public function saveShoperInfo(Request $request){
         $data = $request->all();
@@ -59,15 +104,16 @@ class ShoperController extends Controller
         $shpper->level = $data['level'];
         $shpper->varification_code = sha1(time());
         $shpper->save();
-        Session::put('shopperId', $shpper->id);
         
         if($shpper != null){
             // send email
             MailController::sendShoppersEmail($shpper->shop_name, $shpper->email, $shpper->varification_code);
-            return redirect()->back()->withSuccess('Your account has been created successfully. Please check your email for verification link and activate your account.');
+            // return redirect()->back()->withSuccess('Your account has been created successfully. Please check your email for verification link and activate your account.');
+            return Redirect::to(URL::previous() . "#top-review")->withSuccess('Your account has been created successfully. Please check your email for verification link and activate your account.');
         }
         return redirect()->back()->withError('Something went wrong.');
     }
+
 
     // verify shopper email 
     public function verifyShopper(Request $request){
@@ -77,7 +123,7 @@ class ShoperController extends Controller
         if($shopper != null){
             $shopper->is_varified = 1;
             $shopper->save();
-            return redirect('shopper-dashboard')->withSuccess('Your account has been activate successfully.');
+            return redirect('login')->withSuccess('Your account has been activate successfully. Please login using valid email and password.');
         }
     }
 

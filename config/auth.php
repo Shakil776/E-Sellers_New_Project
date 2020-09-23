@@ -52,9 +52,9 @@ return [
             'provider' => 'esellersAdmin',
         ],
 
-        'vendor' => [
+        'shopper' => [
             'driver' => 'session',
-            'provider' => 'esellersVendor',
+            'provider' => 'esellersShopper',
         ],
     ],
 
@@ -86,9 +86,9 @@ return [
             'model' => App\Admin::class,
         ],
 
-        'esellersVendor' => [
+        'esellersShopper' => [
             'driver' => 'eloquent',
-            'model' => App\Vendor::class,
+            'model' => App\Shoper::class,
         ],
 
         // 'users' => [

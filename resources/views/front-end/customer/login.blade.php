@@ -4,6 +4,18 @@
 
 @section('main-content')
 
+        @if(Session::has('success'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:black;font-size:18px;">{{ Session::get('success') }}</p> 
+        </div>
+        @endif
+
+        @if(Session::has('errors'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:red;font-size:18px;">{{ Session::get('errors') }}</p> 
+        </div>
+        @endif
+
     {{-- message --}}
      @if(Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
@@ -99,20 +111,20 @@
                         </div>
                         <div  class="tab-pane fade" id="shopper-login" role="tabpanel" aria-labelledby="review-top-tab">
                             <div class="theme-card">
-                                <form class="theme-form" action="{{ url('login-check') }}" method="post">
+                                <form class="theme-form" action="{{ url('shopper-login') }}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" name="email" id="loginEmail" placeholder="Email" autocomplete="off">
+                                        <input type="text" class="form-control" name="email" id="loginEmail" placeholder="Enter Shopper Email" autocomplete="off">
                                         <span class="text-danger">{{ $errors->has('email') ? $errors->first('email') : ' ' }}</span>
                                     </div>
                                     <div class="form-group">
                                         <label for="review">Password</label>
-                                        <input type="password" name="password" autocomplete="off" class="form-control" id="loginPassword" placeholder="Enter your password">
+                                        <input type="password" name="password" autocomplete="off" class="form-control" id="loginPassword" placeholder="Enter Shopper password">
                                         <span class="text-danger">{{ $errors->has('password') ? $errors->first('password') : ' ' }}</span>
                                     </div>
                                     <button type="submit" class="btn btn-solid">Login</button>
-                                    <a href="{{ url('forgot-password') }}" class="text-right text-success" style="margin-left: 30px; color: #000;">Forgot Password?</a>
+                                    <a href="#" class="text-right text-success" style="margin-left: 30px; color: #000;">Forgot Password?</a>
                                     <h5 class="text-center" style="text-transform:capitalize; margin-top:15px">
                                          Haven't any account? <a class="text-right text-success" href="{{ url('/register')}} #top-review">Sign Up</a>
                                     </h5>

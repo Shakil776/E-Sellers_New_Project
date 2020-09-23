@@ -54,14 +54,6 @@ Route::match(['get', 'post'], '/update-home-address', 'HomeMakeAddressController
 Route::match(['get', 'post'], '/measurement', 'MeasurementController@measurementOption');
 Route::match(['get', 'post'], '/update-measurement', 'MeasurementController@updateMeasurementDetails');
 
-// register shopper information 
-Route::match(['get', 'post'], '/shopper-save', 'ShoperController@saveShoperInfo');
-// verify shopper email
-Route::get('/verify', 'ShoperController@verifyShopper');
-//shopper dashboard
-Route::get('/shopper-dashboard','ShoperController@shopperDashboard');
-//Create Product
-Route::get('/create-product','ShoperController@createProductSample');
 
 // prevent route if trying to access without login
 Route::group(['middleware' => 'front'], function() {
@@ -433,3 +425,22 @@ Route::post('/product/save', [
 
 // admin login Authentication
 Route::match(['get', 'post'], '/admin-login', 'AdminAuthenticationController@checkAdminLogin');
+
+
+// manage shopper route
+Route::group(["middleware" => "shopper"], function() {
+	//shopper dashboard
+	Route::get('/shopper-dashboard','ShoperController@shopperDashboard');
+	//Create Product
+	Route::get('/create-product','ShoperController@createProductSample');
+	// logout
+	Route::match(['get', 'post'], '/shopper-logout', 'ShoperController@shopperLogout');
+
+});
+
+// register shopper information 
+Route::match(['get', 'post'], '/shopper-save', 'ShoperController@saveShoperInfo');
+// verify shopper email
+Route::get('/verify', 'ShoperController@verifyShopper');
+// shopper login check
+Route::match(['get', 'post'], '/shopper-login', 'ShoperController@checkShopperLogin');

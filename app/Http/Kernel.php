@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
         'front' => \App\Http\Middleware\RedirectIfNotFrontLogin::class,
+        'shopper' => \App\Http\Middleware\RedirectIfNotShopper::class,
         'jwt.verify' => \App\Http\Middleware\JWTMiddleware::class,
     ];
 

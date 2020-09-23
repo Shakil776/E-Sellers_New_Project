@@ -10,9 +10,9 @@
         </div>
         @endif
 
-        @if(Session::has('error'))
+        @if(Session::has('errors'))
         <div style="text-align:center;padding:5px;backgroud-color:green">
-           <p style="color:red;font-size:18px;">{{ Session::get('error') }}</p> 
+           <p style="color:red;font-size:18px;">{{ Session::get('errors') }}</p> 
         </div>
         @endif
 
