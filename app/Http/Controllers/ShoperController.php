@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Shoper;
 use App\Product;
+use App\Review;
+use App\User;
 use Validator;
 use Session;
 use Mail;
@@ -162,5 +164,25 @@ class ShoperController extends Controller
 
         // echo "<pre>"; print_r($allTailorProducts); die;
         return view('front-end.custom-category.tailors_shop')->with(compact('allTailorProducts'));
+    }
+
+    // shopper product details
+    public function shopperProductDetails($id = null) {
+        //get product details of particular id
+        $productDetails = Product::with('designImages')->with('attributes')->where('id', $id)->first();
+        
+        $shopName = Shoper::where('id', $productDetails->shopper_id)->first();
+
+        // reviews
+        $reviews = Review::where('product_id', $id)->get(); 
+        foreach ($reviews as $key => $val) {
+            $customerName = User::where(['id'=>$val->customer_id])->first();
+            if(!empty($customerName)){
+                $reviews[$key]->customer_name = $customerName['name'];
+            }
+        }
+        $reviews_count = Review::where('product_id', $id)->count('review'); 
+        
+        return view('front-end.custom-category.shopper-product-details')->with(compact('productDetails', 'shopName', 'reviews', 'reviews_count'));
     }
 }

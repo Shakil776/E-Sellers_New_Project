@@ -202,7 +202,7 @@
                                                     <div class="product-box">
                                                         <div class="img-wrapper">
                                                             <div class="front">
-                                                                    <a href="#"><img src="{{ asset($shopperProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
+                                                                    <a href="{{ asset('/shopper-product-details/'.$shopperProduct->id) }}"><img src="{{ asset($shopperProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
                                                                 </div>
                                                             <div class="cart-info cart-wrap">
                                                                 <button title="Add to Trailers Shop">
@@ -232,7 +232,7 @@
                                                                         @endphp
                                                                     @endfor
                                                                 </div>
-                                                            <a href="#">
+                                                            <a href="{{ asset('/shopper-product-details/'.$shopperProduct->id) }}">
                                                                 <h6>{{ $shopperProduct->product_name }}</h6>
                                                             </a>
                                                             <h4>TK. {{ $shopperProduct->product_price }}</h4>
@@ -278,7 +278,7 @@
                                         <div class="product-box">
                                             <div class="img-wrapper">
                                                 <div class="front">
-                                                    <a href="#"><img src="{{ asset($lastInsertProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
+                                                    <a href="javascript:void(0)"><img src="{{ asset($lastInsertProduct->product_image) }}" class="img-fluid" alt="" style="display:block"></a>
                                                 </div>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -307,7 +307,7 @@
                                                             @endphp
                                                         @endfor
                                                     </div>
-                                                    <a href="#">
+                                                    <a href="javascript:void(0)">
                                                         <h6>{{ $lastInsertProduct->product_name }}</h6>
                                                     </a>
                                                     <h4>TK. {{ $lastInsertProduct->product_price }}</h4>

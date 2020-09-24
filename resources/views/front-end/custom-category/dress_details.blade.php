@@ -124,23 +124,6 @@
                             </div>
                             </form> 
 
-                            <!-- self design image upload if our design not choose -->
-                            <!-- <form action="{{ url('user-upload-image') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                                <H3>OR</H3>
-                                <span>Upload your desire design image</span> <br>
-                                <label class="control-label">Upload Image: </label>
-                                <input type="file" accept="image/*" name="design_image" id="design_image"><br>
-                                <input type="submit" name="btn" class="btn btn-success" value="Upload">
-                            </form>
-
-                            @if(!empty(Session::get('uploadedImage')))
-                            <a href="javascript:">
-                                <img src="{{ asset(Session::get('uploadedImage')[design_image]) }}" alt="demo design">
-                            </a>
-                            @endif -->
-
-
 
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>

@@ -79,7 +79,7 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-2" for="product_code">Product Code</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" name="product_code" id="product_code" placeholder="Enter Product Code">
+						    	<input type="text" class="form-control" name="product_code" id="product_code" placeholder="Enter Product Code" value="ES-{{ mt_rand(000000, 999999) }}">
 						    	<span class="text-danger">{{ $errors->has('product_code') ? $errors->first('product_code') : ' ' }}</span>
 						    </div>
 						 </div> 

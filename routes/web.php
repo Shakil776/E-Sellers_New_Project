@@ -42,8 +42,6 @@ Route:: get('/affiliates', 'ContactController@affiliates');
 Route::get('/contact-us', 'ContactController@showContact');
 // contact us
 Route::post('/contact', 'ContactController@contact');
-// shopper product details
-Route::get('/shopper-product-details','ContactController@shopperProductDetails');
 //about us
 Route::get('/about-us-page','ContactController@aboutUs');
 
@@ -441,6 +439,9 @@ Route::group(["middleware" => "shopper"], function() {
 	Route::get('/create-product','ShoperController@createProductSample');
 	// logout
 	Route::match(['get', 'post'], '/shopper-logout', 'ShoperController@shopperLogout');
+
+	// shopper product details
+	Route::get('shopper-product-details/{id}','ShoperController@shopperProductDetails');
 
 });
 

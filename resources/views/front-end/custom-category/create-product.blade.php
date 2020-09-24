@@ -23,7 +23,7 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('shopper-dashboard')}}">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create Product</li>
                         </ol>
                     </nav>
@@ -66,7 +66,7 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="state">Product Code <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code" autocomplete="off">
+                                <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code" autocomplete="off" value="ES-{{ mt_rand(000000, 999999) }}">
                             </div>
                             <div class="col-md-6">
                                 <label for="password">Product Price <span class="text-danger">*</span></label>
