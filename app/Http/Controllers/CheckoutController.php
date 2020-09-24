@@ -156,23 +156,23 @@ class CheckoutController extends Controller
                 $payment = Payment::where('order_id', $orders->id)->first();
                 $orderDetails = OrderDetail::with('products')->where('order_id', $orders->id)->get();
 
-                // $email = $user->email;
-                // $name = $user->name;
-                // $messageData = [
-                //     'email' => $email,
-                //     'name' => $name,
-                //     'order_id' => $order->id,
-                //     'order_date' => $order->created_at,
-                //     'orderDetails' => $orderDetails,
-                //     'billingDetails' => $billingDetails,
-                //     'shippingDetails' => $shippingDetails,
-                // ];
+                $email = $user->email;
+                $name = $user->name;
+                $messageData = [
+                    'email' => $email,
+                    'name' => $name,
+                    'order_id' => $order->id,
+                    'order_date' => $order->created_at,
+                    'orderDetails' => $orderDetails,
+                    'billingDetails' => $billingDetails,
+                    'shippingDetails' => $shippingDetails,
+                ];
 
-                // Mail::send('front-end.mails.order_email', $messageData, function($message) use ($email) {
-                //     $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
-                //     $message->to($email);
-                //     $message->subject('Order Confirmation Email');
-                // });
+                Mail::send('front-end.mails.order_email', $messageData, function($message) use ($email) {
+                    $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
+                    $message->to($email);
+                    $message->subject('Order Confirmation Email');
+                });
 
                 return redirect('/thanks');
             }else{

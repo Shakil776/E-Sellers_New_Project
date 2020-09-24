@@ -125,7 +125,7 @@
                         width="100%">
                         <tr>
                             <td style="text-align: center;">
-                                <img src="{{ $message->embed('frontEnd/images/email-temp/delivery-2.png') }}" style="margin-bottom: 30px;">
+                                <img src="{{ $message->embed('frontEnd/images/delivery-2.png') }}" style="margin-bottom: 30px;">
                             </td>
                         </tr>
                         <tr>
@@ -152,7 +152,7 @@
                                         @if(!empty($shippingDetails->shipping_email)) {{ $shippingDetails->shipping_email }} @endif <br>
                                         {{ $shippingDetails->shipping_mobile }}</p>
                                 </td>
-                                <td><img src="{{ $message->embed('frontEnd/images/email-temp/space.jpg') }}" alt=" " height="25" width="30">
+                                <td><img src="{{ $message->embed('frontEnd/images/space.jpg') }}" alt=" " height="25" width="30">
                                 </td>
                                 <td
                                     style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
