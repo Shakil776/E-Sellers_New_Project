@@ -33,7 +33,7 @@ class UserController extends Controller
        
        $userCount = User::where('email' , $data['email'])->count();
        if ($userCount > 0) {
-          return redirect()->back()->with('error', 'Email Already Exists.');
+          return redirect()->back()->withErrors('Email Already Exists.');
        } else {
             $user = new User();
             $user->name = $data['name'];
@@ -72,7 +72,7 @@ class UserController extends Controller
         ]);
 
         if(empty($request->email) || empty($request->password)){
-            return redirect()->back()->with('success', 'Field must not be empty.');
+            return redirect()->back()->withErrors('Field must not be empty.');
         }
 
         $userdata = array(
@@ -87,7 +87,7 @@ class UserController extends Controller
             }
             return redirect('/cart-show');
         } else {
-            return redirect()->back()->with('error', 'Invalid Credentials!');
+            return redirect()->back()->withErrors('Invalid Credentials!');
         }
     }
 
@@ -171,21 +171,14 @@ class UserController extends Controller
 
         if (!Hash::check($request->old_password, $userById->password)) {
             // The passwords not matches
-            return redirect()->back()->with("error","Current password does not matches.");
+            return redirect()->back()->withErrors("Current password does not matches.");
         }
-
-
-        // checke new password and current password is same
-        // if(strcmp($request->get('old_password'), $request->get('new_password')) == 0){
-        //     //Current password and new password are same
-        //     return redirect()->back()->with("message","New Password cannot be same as your current password."); 
-        // }
 
         // Change Password
         $user = User::find($user_id);
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
-        return redirect()->back()->with("success", "Your password has been updated successfully.");
+        return redirect()->back()->withSuccess("Your password has been updated successfully.");
     }
 
     // forgot password
@@ -200,7 +193,7 @@ class UserController extends Controller
             // user email count
             $emailCount = User::where('email', $data['email'])->count();
             if ($emailCount == 0) {
-                return redirect()->back()->with('error', 'Email does not exists!');
+                return redirect()->back()->withErrors('Email does not exists!');
             }
             // get user details
             $userDetails = User::where('email', $data['email'])->first();
@@ -211,20 +204,20 @@ class UserController extends Controller
             // update password
             User::where('email', $data['email'])->update(['password' => $newPassword]);
             // send new forgot password to the email code
-            // $email = $data['email'];
-            // $name = $userDetails->name;
-            // $messageData = [
-            //     'email' => $email,
-            //     'name' => $name,
-            //     'password' => $randomPassword
-            // ];
+            $email = $data['email'];
+            $name = $userDetails->name;
+            $messageData = [
+                'email' => $email,
+                'name' => $name,
+                'password' => $randomPassword
+            ];
 
-            // Mail::send('front-end.mails.forgot_pass_mail', $messageData, function($message) use ($email) {
-            //     $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
-            //     $message->to($email);
-            //     $message->subject('New Password');
-            // });
-            return redirect('login')->with('success', 'Please check your email for new Password.');
+            Mail::send('front-end.mails.forgot_pass_mail', $messageData, function($message) use ($email) {
+                $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
+                $message->to($email);
+                $message->subject('New Password');
+            });
+            return redirect('login')->withSuccess('Please check your email for new Password.');
         }
         return view('front-end.customer.forgot_password');
     }

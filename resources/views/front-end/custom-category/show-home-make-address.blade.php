@@ -1,3 +1,7 @@
+<?php
+    use App\DesignImage;
+    $design_image = DesignImage::find(Session::get('chooseProduct')['design_image']);
+?>
 @extends('front-end.master')
 
 @section('title', 'Add Cart')
@@ -121,6 +125,9 @@
                                 <p>Product Price : <b>TK. {{ $product->product_price }} </b></p>
                                 <p>Quantity : <b>{{ Session::get('chooseProduct')['qty'] }}</b></p>
                                 <p> Total(TK) : <b>{{ $product->product_price * Session::get('chooseProduct')['qty'] }}</b></p>
+                                @if(!empty($design_image))
+                                <p>Design Image : </p><img src="{{ asset($design_image->design_image) }}" width="100" height="100">
+                                @endif
                             @endif
                             </div>
 

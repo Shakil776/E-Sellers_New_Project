@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Admin;
 use Auth;
+use Mail;
 use Session;
 
 class AdminAuthenticationController extends Controller
@@ -58,14 +59,38 @@ class AdminAuthenticationController extends Controller
                 return redirect()->back()->with('error', 'Admin Email already exists. Please choose another.');
             } else {
                 if($request->type == "Admin"){
+
+                    $pass_without_hash = $request->password;
+
                     $admin = new Admin();
                     $admin->name = $request->name;
                     $admin->email = $request->email;
                     $admin->mobile = $request->mobile;
-                    $admin->password = Hash::make($request->password);
+                    
+                    $admin->password = Hash::make($pass_without_hash);
                     $admin->type = $request->type;
                     $admin->save();
-                    return redirect()->back()->with('success', 'Admin Added Successfully.');
+                    
+                    if($admin != null){
+                        // send email and password to the admin email
+                        $email = $admin->email;
+                        $name = $admin->name;
+                        $password = $pass_without_hash;                        
+                        
+                        $messageData = [
+                            'email' => $email,
+                            'name' => $name,
+                            'password' => $password
+                        ];
+
+                        Mail::send('front-end.mails.admin_details_mail', $messageData, function($message) use ($email) {
+                            $message->from('esellersecommerse@gmail.com', 'E-Sellers Online Shop');
+                            $message->to($email);
+                            $message->subject('Admin Information');
+                        });
+                        return redirect()->back()->with('success', 'Admin Added Successfully. Please check email for login information.');
+                    }
+
                 }else if($request->type == "Sub Admin"){
                     if(empty($request->customer_access)){
                         $request->customer_access = 0;
