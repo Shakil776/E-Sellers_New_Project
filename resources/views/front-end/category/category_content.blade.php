@@ -40,6 +40,39 @@
                                         aria-hidden="true"></i> back</span>
                             </div>
 
+                             <div class="collection-collapse-block open">
+                                <h3 class="collapse-block-title">Price Filter</h3>
+                                <div class="collection-collapse-block-content">
+                                    <div class="collection-brand-filter">
+                                        <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="text" placeholder="Product Name" class="form-control" name="product-name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="number" placeholder="Min Price" class="form-control" name="minprice">
+                                                        </div>    
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="number" placeholder="Max Price" class="form-control" name="maxprice">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-sm-12">
+                                                        <button type="submit" class="btn btn-solid float-right" style="padding: 7px 29px;">Search</button>
+                                                    </div> 
+                                                </div>
+                                            </form>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- categories --}}
                             <div class="collection-collapse-block open">
                                 <h3 class="collapse-block-title">Categories</h3>
@@ -53,6 +86,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
 
 
                             {{-- manufacturar --}} 
