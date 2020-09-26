@@ -54,10 +54,6 @@ class ApiSearchController extends Controller
              $searchProducts->where('product_name', $request->searchForm['search_key']);
         }
 
-        // if ($request->searchForm['category'] != "") {
-        //     $searchProducts->where('product_name', $request->input('product_name'));
-        // }
-
         if($request->min_price != ""){
              $searchProducts->where("product_price", ">=", $request->min_price);
         }

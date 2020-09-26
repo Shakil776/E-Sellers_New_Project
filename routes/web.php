@@ -28,6 +28,8 @@ Route::match(['get', 'post'], '/cart-remove/{id}', 'CartController@deleteCart');
 Route::match(['get', 'post'], '/cart-update', 'CartController@updateCart');
 // search product
 Route::match(['get', 'post'], '/search', 'SearchController@search');
+// advance filter/search product
+Route::match(['get', 'post'], '/filter', 'SearchController@filterSearch');
 // check subscriber email
 Route::post('/check-subscriber-email', 'NewsletterController@checkSubscriberEmail');
 // add subscriber email

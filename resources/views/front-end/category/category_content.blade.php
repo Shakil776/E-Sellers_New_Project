@@ -45,21 +45,22 @@
                                 <div class="collection-collapse-block-content">
                                     <div class="collection-brand-filter">
                                         <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                            <form action="#">
+                                            <form action="{{ url('filter') }}" method="post">
+                                            @csrf
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
-                                                            <input type="text" placeholder="Product Name" class="form-control" name="product-name">
+                                                            <input type="text" placeholder="Keyword" class="form-control" name="name_keyword" autocomplete="off">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="number" placeholder="Min Price" class="form-control" name="minprice">
+                                                            <input type="number" placeholder="Min Price" class="form-control" name="min_price" autocomplete="off">
                                                         </div>    
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="number" placeholder="Max Price" class="form-control" name="maxprice">
+                                                            <input type="number" placeholder="Max Price" class="form-control" name="max_price" autocomplete="off">
                                                         </div>
                                                     </div> 
                                                     <div class="col-sm-12">
