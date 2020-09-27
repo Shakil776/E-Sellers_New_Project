@@ -74,7 +74,7 @@
                             <h3>TK. {{ $productDetails->product_price }}</h3>
                             <h3>Code. {{ $productDetails->product_code }}</h3>
 
-                            <form action="{{ url('select-service') }}" method="post">
+                            <form action="{{ url('select-service') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                             <div class="product-description border-product">
                                 <h6 class="product-title">quantity</h6>
@@ -111,6 +111,20 @@
 
                                         </div>
                                     </div>
+
+
+                                    
+                                        
+                                    <div class="col-sm-12 guage-image">
+                                        <br><br><h2 class="text-center text-danger">OR</h2>
+                                        <h6 class="product-title">Don't choice our design? Upload your  own design from here.</h6>
+                                        <input type="file" accept="image/*" class="form-control"  name="customer_design_image" />
+                                        
+                                    </div>
+                                            
+                                        
+
+
                                 </div>
                                 
                                

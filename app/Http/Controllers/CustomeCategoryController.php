@@ -10,6 +10,7 @@ use App\ProductsAlternateImage;
 use App\DesignImage;
 use App\Shoper;
 use Session;
+use Image;
 
 class CustomeCategoryController extends Controller
 {
@@ -147,7 +148,25 @@ class CustomeCategoryController extends Controller
     //select service
     public function selectService(Request $request){
         if($request->isMethod('post')){
-            //$data = $request->all();
+            
+            if ($request->hasFile('customer_design_image')) {
+                $image   = $request->file('customer_design_image');
+
+                $image_tmp = Image::make($image);
+                $imageExtension = $image->getClientOriginalExtension();
+                $imageName      = 'cus_d'.rand(111, 999999).time().'.'.$imageExtension;
+                $image_path = 'uploads/design-image/'.$imageName;
+                Image::make($image_tmp)->resize(650, 700)->save($image_path); 
+
+                $designImage = new DesignImage();
+                $designImage->product_id = $request->product_id;
+                $designImage->design_image = $image_path;
+                $designImage->status = 1;
+                $designImage->save();
+                $customer_design_image = $designImage->design_image;
+            }
+            
+
             $qty = $request->qty;
             $product_id = $request->product_id;
 
@@ -156,10 +175,17 @@ class CustomeCategoryController extends Controller
             }else{
                 $design_image = 0;
             }
+
+            if(!empty($customer_design_image)){
+                $customer_design_image = $customer_design_image;
+            }else{
+                $customer_design_image = 0;
+            }
             
-            $data = ['qty'=>$qty, 'product_id'=>$product_id, 'design_image'=>$design_image]; 
+            $data = ['qty'=>$qty, 'product_id'=>$product_id, 'design_image'=>$design_image, 'customer_design_image'=>$customer_design_image]; 
+           
             Session::put('chooseProduct', $data);
-            // return response(Session::get('chooseProduct')); die;
+            // return response($data); die;
             return view('front-end.custom-category.select-service');
         }
         return view('front-end.custom-category.select-service');

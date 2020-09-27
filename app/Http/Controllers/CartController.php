@@ -19,6 +19,12 @@ class CartController extends Controller
             $design_image = "";
         }
 
+        if($request->customer_design_image){
+            $customer_design_image = $request->customer_design_image;
+        }else{
+            $customer_design_image = "";
+        }
+
     	Cart::add([
     		'id' => $request->id,
     		'name' => $product->product_name,
@@ -29,6 +35,7 @@ class CartController extends Controller
     			'image' => $product->product_image,
                 'code' => $product->product_code,
                 'design_image' => $design_image,
+                'customer_design_image' => $customer_design_image,
                 // 'size' => $request->size,
                 // 'color' => $request->color,
     		]

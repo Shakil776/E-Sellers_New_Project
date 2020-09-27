@@ -125,8 +125,11 @@
                                 <p>Product Price : <b>TK. {{ $product->product_price }} </b></p>
                                 <p>Quantity : <b>{{ Session::get('chooseProduct')['qty'] }}</b></p>
                                 <p> Total(TK) : <b>{{ $product->product_price * Session::get('chooseProduct')['qty'] }}</b></p>
+
                                 @if(!empty($design_image))
                                 <p>Design Image : </p><img src="{{ asset($design_image->design_image) }}" width="100" height="100">
+                                @elseif(!empty(Session::get('chooseProduct')['customer_design_image']))
+                                <p>Design Image : </p><img src="{{ asset(Session::get('chooseProduct')['customer_design_image']) }}" width="100" height="100">
                                 @endif
                             @endif
                             </div>
@@ -136,6 +139,7 @@
                             <input type="hidden" name="id" value="{{ Session::get('chooseProduct')['product_id'] }}" />
                             
                             <input type="hidden" name="design_image" value="{{ Session::get('chooseProduct')['design_image'] }}" />
+                            <input type="hidden" name="customer_design_image" value="{{ Session::get('chooseProduct')['customer_design_image'] }}" />
                             
                             
                             <button type="submit" class="btn btn-solid mt-1" name="addToCart" value="add to cart">Add to Cart</button>
