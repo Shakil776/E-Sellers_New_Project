@@ -44,7 +44,7 @@
                                         <div class="theme-card">
                                             <div class="form-row">
                                                 <div class="col-sm-12 card-header mb-4">
-                                                    <h4 class="text-center">Kamiz</h4>
+                                                    <h4 class="text-center">Kameez</h4>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="shoulder">Shoulder <span class="text-danger">*</span></label>

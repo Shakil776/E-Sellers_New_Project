@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row partition2">
                 <div class="col-md-6">
-                    <a href="{{ asset('/product-category/mens-collection') }}">
+                    <a href="{{ asset('/custom-product/salwar-kamiz') }}">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
                                 <img src="{{ asset('frontEnd')}}/images/sub-banner1.jpg" class="img-fluid blur-up lazyload bg-img"
@@ -40,14 +40,14 @@
                             <div class="contain-banner">
                                 <div>
                                     <h4>save 30%</h4>
-                                    <h2>men</h2>
+                                    <h2>Sawlar Kamiz</h2>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6">
-                <a href="{{ asset('/product-category/womens-collection') }}">
+                <a href="{{ url('register') }}#top-review">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
                                 <img src="{{ asset('frontEnd')}}/images/sub-banner2.jpg" class="img-fluid blur-up lazyload bg-img"
@@ -55,8 +55,8 @@
                             </div>
                             <div class="contain-banner">
                                 <div>
-                                    <h4>save 60%</h4>
-                                    <h2>women</h2>
+                                    <h4>Increase Your Business With Us ?</h4>
+                                    <h2>Create Shop</h2>
                                 </div>
                             </div>
                         </div>
