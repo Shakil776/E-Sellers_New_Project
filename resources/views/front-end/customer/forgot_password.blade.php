@@ -4,24 +4,17 @@
 
 @section('main-content')
 
-    {{-- message --}}
-     @if(Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-          <strong>Success! </strong>  {{ Session::get('message') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        @if(Session::has('success'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:black;font-size:18px;">{{ Session::get('success') }}</p> 
         </div>
-    @endif
+        @endif
 
-    <!-- @if(session()->has('error'))
-        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-          <strong>Ooops! </strong>  {{ session()->get('error') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        @if(Session::has('errors'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:red;font-size:18px;">{{ Session::get('errors') }}</p> 
         </div>
-    @endif -->
+        @endif
 
     {{-- laravel validation error show message --}}
     @if ($errors->any())

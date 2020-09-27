@@ -26,15 +26,17 @@
     </div>
     <!-- breadcrumb End -->
 
-    @if(Session::has('success'))
-        <div id="msg" class="alert alert-success left-icon-alert" role="alert">
-            <strong>Well done! &nbsp;</strong>{{ session('success') }}
+        @if(Session::has('success'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:black;font-size:18px;">{{ Session::get('success') }}</p> 
         </div>
-        @elseif(Session::has('error'))
-        <div id="msg" class="alert alert-danger left-icon-alert" role="alert">
-            <strong>Opps! &nbsp;</strong>{{ session('error') }}
+        @endif
+
+        @if(Session::has('errors'))
+        <div style="text-align:center;padding:5px;backgroud-color:green">
+           <p style="color:red;font-size:18px;">{{ Session::get('errors') }}</p> 
         </div>
-    @endif
+        @endif
 
 
     <!--section start-->

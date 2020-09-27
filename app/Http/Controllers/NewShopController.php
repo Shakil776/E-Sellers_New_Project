@@ -88,10 +88,12 @@ class NewShopController extends Controller
         $manufacturers = Manufacturer::where(['publication_status' => 1])->get();
 
         $newProducts1 = Product::where('publication_status', 1)
+                                ->where('category_id', '!=', 0)
                                 ->inRandomOrder()
     							->take(3)
                                 ->get();
         $newProducts2 = Product::where('publication_status', 1)
+                                ->where('category_id', '!=', 0)
                                 ->inRandomOrder()
     							->take(3)
                                 ->get();
@@ -125,10 +127,12 @@ class NewShopController extends Controller
         //echo "<pre>";print_r($allBandProducts);die();
 
         $newProducts1 = Product::where('publication_status', 1)
+                                ->where('category_id', '!=', 0)
                                 ->inRandomOrder()
     							->take(3)
                                 ->get();
         $newProducts2 = Product::where('publication_status', 1)
+                                ->where('category_id', '!=', 0)
                                 ->inRandomOrder()
     							->take(3)
                                 ->get();

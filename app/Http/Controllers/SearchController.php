@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Http\Resources\ProductCollection;
 use DB;
 
 class SearchController extends Controller
@@ -32,6 +33,49 @@ class SearchController extends Controller
             
         }
         return redirect()->back();
+    }
+
+    // filter search
+    public function filterSearch(Request $request){
+       if($request->isMethod('post')){
+
+            $query = Product::where('category_id', '!=', 0);
+
+            $name_keyword = '';
+            $min_price = 0;
+            $max_price = 0;
+
+            if($request->has('name_keyword')){
+                $name_keyword = $request->get('name_keyword');
+            }
+
+            if($request->has('min_price')){
+                $min_price = $request->get('min_price');
+            }
+
+            if($request->has('max_price')){
+                $max_price = $request->get('max_price');
+            }
+
+            if(!empty($name_keyword)) {
+                $query->where('product_name', 'LIKE', '%' .$name_keyword. '%');
+            }
+
+            if(($min_price) && ($max_price)) {
+                $query->whereBetween('product_price', [$min_price, $max_price]);
+            }
+            elseif(!is_null($min_price)) {
+                $query->where('product_price', '>=', $min_price);
+            }
+            elseif(!is_null($max_price)) {
+                $query->where('product_price', '<=', $max_price);
+            }
+
+            $searchProducts = $query->paginate(30);
+
+            return view('front-end.search.filter_search_result', compact('searchProducts'));
+       }
+       return redirect()->back();
     }
 
 
