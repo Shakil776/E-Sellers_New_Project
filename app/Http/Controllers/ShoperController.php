@@ -185,4 +185,33 @@ class ShoperController extends Controller
         
         return view('front-end.custom-category.shopper-product-details')->with(compact('productDetails', 'shopName', 'reviews', 'reviews_count'));
     }
+
+    // manage shopper info
+    public function manageShopper(){
+        $shoppers = Shoper::all();
+        return view('admin.shopper.shopper_manage')->with(compact('shoppers'));
+    }
+
+    // active shopper status
+    public function activeShopperStatus($id) {
+        $shopper = Shoper::find($id);
+        $shopper->status = 1;
+        $shopper->save();
+        return redirect('/shopper/manage')->with('message', 'Shopper Active.');
+    }
+
+    // deactive shopper status
+    public function deactiveShopperStatus($id) {
+        $shopper = Shoper::find($id);
+        $shopper->status = 0;
+        $shopper->save();
+        return redirect('/shopper/manage')->with('message', 'Shopper Deactive.');
+    }
+
+    // delete shopper
+    public function deleteShopper($id) {
+        $shopper = Shoper::find($id);
+        $shopper->delete();
+        return redirect('/shopper/manage')->with('message', 'Shopper Info Deleted.');
+    }
 }

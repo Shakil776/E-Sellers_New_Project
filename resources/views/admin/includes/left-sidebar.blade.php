@@ -35,6 +35,15 @@
         </li>
         @endif
 
+        
+        <li>
+            <a href=""><i class="fa fa-users fa-fw"></i>&nbsp;Shopper Manager<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li><a href="{{ route('manage_shopper') }}">Manage Shopper</a></li>
+            </ul>
+        </li>
+        
+
 
         @if(Session::get('adminDetails')['categories_access'] == 1)
         <li>

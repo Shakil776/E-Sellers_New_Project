@@ -11,6 +11,7 @@ use App\DesignImage;
 use App\Shoper;
 use Session;
 use Image;
+use App\Review;
 
 class CustomeCategoryController extends Controller
 {
@@ -117,32 +118,23 @@ class CustomeCategoryController extends Controller
         $customeCategoryName = CustomeCategory::select('category_name')->where('id', 2)->first();
         // return response($productDetails); die;
         
-        
-        // related product show in product details page
-        // $relatedProducts = Product::where('id','!=',$id)
-        //                             ->where(['category_id'=>$productDetails->category_id])
-        //                             ->get();
+        // related product show in dress details page
+        $relatedProducts = Product::where('id','!=',$id)
+                                    ->where(['custom_category_id'=>$productDetails->custom_category_id])
+                                    ->get();
 
-        //$total_stock = ProductsAttributes::where('product_id', $id)->sum('stock'); 
 
-        // $reviews = Review::where('product_id', $id)->get(); 
-        // foreach ($reviews as $key => $val) {
-        //     $customerName = User::where(['id'=>$val->customer_id])->first();
-        //     if(!empty($customerName)){
-        //         $reviews[$key]->customer_name = $customerName['name'];
-        //     }
-        // }
-        // $reviews_count = Review::where('product_id', $id)->count('review'); 
+        $reviews = Review::where('product_id', $id)->get(); 
+        foreach ($reviews as $key => $val) {
+            $customerName = User::where(['id'=>$val->customer_id])->first();
+            if(!empty($customerName)){
+                $reviews[$key]->customer_name = $customerName['name'];
+            }
+        }
 
         $productAltImages = ProductsAlternateImage::where('product_id', $id)->get();
-        // $designImages = DesignImage::where('status', 1)->inRandomOrder()->take(12)->get();
-
-        // $customerDesignImageId = Session::get('designImageId');
-        // if($customerDesignImageId){
-        //     $customerDesignImage = DesignImage::where('id', $customerDesignImageId)->first();
-        // }
         
-        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'customeCategoryName', 'shopName'));
+        return view('front-end.custom-category.dress_details')->with(compact('productDetails', 'brandName', 'productAltImages', 'customeCategoryName', 'shopName', 'relatedProducts' ,'reviews'));
     }
 
     //select service

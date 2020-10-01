@@ -266,6 +266,27 @@ Route::group(["middleware" => "admin"], function() {
 		'as'   => 'delete-customer'
 	]);
 
+	// shoppers info manage admin routes
+	Route::get('/shopper/manage', [
+		'uses' => 'ShoperController@manageShopper',
+		'as'   => 'manage_shopper'
+	]);
+
+	Route::get('/shopper/active/{id}', [
+		'uses' => 'ShoperController@activeShopperStatus',
+		'as'   => 'active-shopper'
+	]);
+
+	Route::get('/shopper/deactive/{id}', [
+		'uses' => 'ShoperController@deactiveShopperStatus',
+		'as'   => 'deactive-shopper'
+	]);
+
+	Route::get('/shopper/delete/{id}', [
+		'uses' => 'ShoperController@deleteShopper',
+		'as'   => 'delete-shopper'
+	]);
+
 
 	// product info
 	Route::get('/product/add', [

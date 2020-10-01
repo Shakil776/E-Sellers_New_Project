@@ -181,23 +181,24 @@
                         </div>
                         <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                             <ul>
+                            @foreach($reviews as $review)
                                 <li class="user-ratings">
-                                    <div class="user-rating-name"></div>
+                                    <div class="user-rating-name">{{ $review->customer_name }}</div>
                                     <div class="media">
                                         <div class="media-body ml-3">
                                             <div class="rating three-star">
-                                                <i class="fa fa-star" aria-hidden="true" style="color: red;"></i>
-                                                <i class="fa fa-star" aria-hidden="true" style="color: red;"></i>
-                                                <i class="fa fa-star" aria-hidden="true" style="color: red;"></i>
-                                                <i class="fa fa-star" aria-hidden="true" style="color: red;"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true" style="color: red;"></i>
+                                                @for ($i = 0; $i < 5; ++$i)
+                                                    <i class="fa fa-star{{ $review->rating<=$i?'-o':'' }}" aria-hidden="true" style="color: red;"></i>
+                                                @endfor
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="user-rating-comments">
-                                        <p>Nice</p>
+                                        <p>{{ $review->review }}</p>
                                     </div>
                                 </li>
+                            @endforeach
                             </ul>
                         </div>
                     </div>
@@ -216,32 +217,43 @@
                 </div>
             </div>
             <div class="row search-product">
+            @foreach($relatedProducts as $relatedProduct)
                     <div class="col-xl-2 col-md-4 col-sm-6">
                     <div class="product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="#" class="bg-size blur-up lazyloaded" ><img src="{{ asset('frontEnd')}}/images/make-design/front-2.jpg" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                <a href="{{ asset('/product-details/'.$relatedProduct->id) }}" class="bg-size blur-up lazyloaded" ><img src="{{ asset($relatedProduct->product_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                             </div>
                             <div class="back">
-                                <a href="#" class="bg-size blur-up lazyloaded" ><img src="{{ asset('frontEnd')}}/images/make-design/back-2.jpg" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                <a href="{{ asset('/product-details/'.$relatedProduct->id) }}" class="bg-size blur-up lazyloaded" ><img src="{{ asset($relatedProduct->back_image) }}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                             </div>
                         </div>
 
                         <div class="product-detail">
-                            <div class="rating-block">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> 
-                                <i class="fas fa-star"></i> 
-                                <i class="fas fa-star"></i> 
-                                <i class="far fa-star"></i>      
+                        <div class="rating-block">
+                            <?php $rating = round($relatedProduct->rating); ?>
+
+                                @for($x = 5; $x > 0; $x--)
+                                    @php 
+                                        if($rating > 0.5){
+                                            echo '<i class="fas fa-star"></i>';
+                                        }elseif($rating <= 0 ){
+                                            echo '<i class="far fa-star"></i>';
+                                        }else{
+                                            echo '<i class="fas fa-star-half-alt"></i>';
+                                        }
+                                        $rating--;      
+                                    @endphp
+                                @endfor
                             </div>
-                            <a href="#">
-                                <h6>Design 2</h6>
+                            <a href="{{ asset('/product-details/'.$relatedProduct->id) }}">
+                                <h6>{{ $relatedProduct->product_name }}</h6>
                             </a>
-                            <h4>TK. 140</h4>
+                            <h4>TK. {{ $relatedProduct->product_price }}</h4>
                         </div>
                     </div>
-                </div>   
+                </div>  
+            @endforeach 
             </div>
         </div>
     </section>
